@@ -1,0 +1,164 @@
+# Tool 元数据配置
+# 文档工程师可直接修改 name 和 description 字段
+# 修改后重启服务生效
+
+tools:
+  v1:
+    # === 用户 ===
+    get_token:
+      name: issue_access_token
+      description: "Issue a user access token with the Chat Server API. Your app server must obtain and distribute this token before the client connects to the Nexconn messaging service."
+    get_user_profile_permission:
+      name: get_default_profile_visibility
+      description: 'Query the Nexconn Chat Users setting "Default profile visibility" (userProfilePromission). Controls visibility permissions for user profiles in your application. By default, profiles are hidden from all users, and only name and avatar are visible.'
+      defaultValue: 0
+    set_user_profile_permission:
+      name: set_default_profile_visibility
+      description: 'Set the Nexconn Chat Users setting "Default profile visibility" (userProfilePromission). Allowed values: 0=None, 1=Everyone, 2=Friend only. Changes take effect in about 15 minutes.'
+
+    # === 消息 ===
+    get_allow_more_client:
+      name: get_message_synchronization
+      description: 'Query the Nexconn Chat multi-client setting "Message synchronization" (allowMoreWebClient). Supports message synchronization across web, desktop, mobile, and mini program platforms, and allows multiple web clients online simultaneously.'
+      defaultValue: false
+    set_allow_more_client:
+      name: set_message_synchronization
+      description: 'Set the Nexconn Chat multi-client setting "Message synchronization" (allowMoreWebClient). Supports message synchronization across web, desktop, mobile, and mini program platforms, and allows multiple web clients online simultaneously.'
+    get_inbox_save_day:
+      name: get_offline_message_retention
+      description: 'Query the Nexconn Chat global message setting "Offline message cloud retention period" (inboxSaveDay). When target users are offline, received messages are retained. Users receive offline messages on next login. Adjustable range is 1-7 days and applies only to Direct, Group, and System channels.'
+      defaultValue: 7
+    set_inbox_save_day:
+      name: set_offline_message_retention
+      description: 'Set the Nexconn Chat global message setting "Offline message cloud retention period" (inboxSaveDay). When target users are offline, received messages are retained. Users receive offline messages on next login. Adjustable range is 1-7 days and applies only to Direct, Group, and System channels.'
+
+    # === 群组 ===
+    get_pull_his_msg_no_grp_member:
+      name: get_group_non_member_history_access
+      description: 'Query the Nexconn Chat Group Channels setting "Restrict chat history access to members" (isPullHisMsgNoGrpMember). By default, users cannot retrieve group historical messages when they are not in the group. After enabling, users can retrieve historical messages even when they are not in the specified group.'
+      defaultValue: false
+    set_pull_his_msg_no_grp_member:
+      name: set_group_non_member_history_access
+      description: 'Set the Nexconn Chat Group Channels setting "Restrict chat history access to members" (isPullHisMsgNoGrpMember). Controls whether users can retrieve group historical messages when they are not in the specified group.'
+    get_pull_before_join_msg:
+      name: get_group_pre_join_history_access
+      description: 'Query the Nexconn Chat Group Channels setting "Enable pre-join history access by new member" (isPullBeforeJoinMsg). By default, users can only view messages sent after joining a group. Enabling this allows users to view historical messages from before they joined and requires message retention for Direct and Group channels.'
+      defaultValue: false
+    set_pull_before_join_msg:
+      name: set_group_pre_join_history_access
+      description: 'Set the Nexconn Chat Group Channels setting "Enable pre-join history access by new member" (isPullBeforeJoinMsg). Allows users to view historical messages from before they joined a group and requires message retention for Direct and Group channels.'
+    get_group_dis_allow_sdk_opt_switch:
+      name: get_group_management_via_chat_sdk
+      description: 'Query the Nexconn Chat Group Channels setting "Group management via chat SDK" (groupDisAllowSDKOptSwitch). Allows group operations through the client Chat SDK by default. Operation permissions can be configured based on your business needs and take effect in about 15 minutes.'
+      defaultValue: false
+    set_group_dis_allow_sdk_opt_switch:
+      name: set_group_management_via_chat_sdk
+      description: 'Set the Nexconn Chat Group Channels setting "Group management via chat SDK" (groupDisAllowSDKOptSwitch). Configures group operation permissions for the client Chat SDK based on your business needs. Changes take effect in about 15 minutes.'
+
+    # === 好友 ===
+    get_person_msg_need_friend:
+      name: get_restrict_direct_messaging_to_friends
+      description: 'Query the Nexconn Chat Friend setting "Restrict direct messaging to friends" (personMsgNeedFriend). When enabled, one-to-one messages sent through the client Chat SDK require friendship verification. Chat Server API messages are not restricted, and user blocklist restrictions take priority over friend relationships.'
+      defaultValue: false
+    set_person_msg_need_friend:
+      name: set_restrict_direct_messaging_to_friends
+      description: 'Set the Nexconn Chat Friend setting "Restrict direct messaging to friends" (personMsgNeedFriend). Requires friendship verification for one-to-one messages sent through the client Chat SDK. Chat Server API messages are not restricted, and user blocklist restrictions take priority.'
+    get_add_friend_level:
+      name: get_friend_request_preference
+      description: 'Query the Nexconn Chat Friend setting "Friend request preference" (addFriendLevel). Controls the default friend request permission for your application. If users have not modified their own permission, the application default applies.'
+      defaultValue: 2
+    set_add_friend_level:
+      name: set_friend_request_preference
+      description: 'Set the Nexconn Chat Friend setting "Friend request preference" (addFriendLevel). Allowed values: 0=Default, 1=Anyone can add directly, 2=Approval required, 3=Adding friends is not allowed.'
+    get_friend_profile_change_notify:
+      name: get_profile_update_auto_messaging
+      description: 'Query the Nexconn Chat Friend setting "Enable auto messaging for profile update" (subDriven - 3). When a user''s profile changes, it syncs to all their friends in real time by auto messaging. These messages count toward one-to-one message distribution and downlink message statistics.'
+      defaultValue: false
+    set_friend_profile_change_notify:
+      name: set_profile_update_auto_messaging
+      description: 'Set the Nexconn Chat Friend setting "Enable auto messaging for profile update" (subDriven - 3). When enabled, user profile changes sync to all friends in real time by auto messaging. Changes take effect in about 15 minutes.'
+    get_friend_online_status_notify:
+      name: get_presence_update_auto_messaging
+      description: 'Query the Nexconn Chat Friend setting "Enable auto messaging for presence update" (subDriven - 4). When a user''s online status changes, it syncs to all their friends in real time by auto messaging.'
+      defaultValue: false
+    set_friend_online_status_notify:
+      name: set_presence_update_auto_messaging
+      description: 'Set the Nexconn Chat Friend setting "Enable auto messaging for presence update" (subDriven - 4). When enabled, user online status changes sync to all friends in real time by auto messaging. Changes take effect in about 15 minutes.'
+
+    # === 推送 ===
+    get_mob_push_switch:
+      name: get_mobile_push_when_web_pc_online
+      description: 'Query the Nexconn Chat push notification setting "Send to mobiles when web/PC online" (mobPushSwit). By default, when web or PC is online and mobile is offline, mobile devices do not receive push notifications for new messages. After enabling, mobile devices receive push notifications.'
+      defaultValue: false
+    set_mob_push_switch:
+      name: set_mobile_push_when_web_pc_online
+      description: 'Set the Nexconn Chat push notification setting "Send to mobiles when web/PC online" (mobPushSwit). Controls whether mobile devices receive push notifications for new messages when web or PC is online and mobile is offline.'
+    get_push_language:
+      name: get_push_notification_language
+      description: 'Query the Nexconn Chat push notification setting "Push notification language" (pushLanguage). Controls the push notification language for built-in messages. Use locale values such as zh_cn, en_us, or ja_JP.'
+      defaultValue: zh_cn
+    set_push_language:
+      name: set_push_notification_language
+      description: 'Set the Nexconn Chat push notification setting "Push notification language" (pushLanguage). Use locale values such as zh_cn, en_us, or ja_JP.'
+
+    # === 聊天室 ===
+    get_open_single_level_msg:
+      name: get_open_channel_join_message_type_filter
+      description: 'Query the Nexconn Chat Open Channels setting "Message type filter on join" (isOpenSingleLevelMsg). By default, users can retrieve up to 50 recent messages of all types when joining an Open Channel. After enabling, you can configure specific message types to retrieve.'
+      defaultValue: false
+    set_open_single_level_msg:
+      name: set_open_channel_join_message_type_filter
+      description: 'Set the Nexconn Chat Open Channels setting "Message type filter on join" (isOpenSingleLevelMsg). Configures which recent message types users receive when joining an Open Channel.'
+    get_concurrent_join_chrm:
+      name: get_open_channel_multiple_participation
+      description: 'Query the Nexconn Chat Open Channels setting "Allow participation in multiple channels" (isConcurrentJoinChrm). Allows a single user to join multiple Open Channels simultaneously.'
+      defaultValue: false
+    set_concurrent_join_chrm:
+      name: set_open_channel_multiple_participation
+      description: 'Set the Nexconn Chat Open Channels setting "Allow participation in multiple channels" (isConcurrentJoinChrm). Allows a single user to join multiple Open Channels simultaneously.'
+    get_chrm_exit_suc_if_multi_client:
+      name: get_open_channel_logout_sync
+      description: 'Query the Nexconn Chat Open Channels setting "Sync logout across devices" (chrmExitSucIfMultiClinet). When users are online on multiple devices and have joined the same Open Channel, logout from one device does not log out other devices unless this setting is enabled.'
+      defaultValue: false
+    set_chrm_exit_suc_if_multi_client:
+      name: set_open_channel_logout_sync
+      description: 'Set the Nexconn Chat Open Channels setting "Sync logout across devices" (chrmExitSucIfMultiClinet). Syncs Open Channel logout across devices when users are online on multiple devices and have joined the same Open Channel.'
+    get_ntf_for_join_or_exit_chrm:
+      name: get_open_channel_participant_event_auto_messaging
+      description: 'Query the Nexconn Chat Open Channels setting "Enable auto messaging for participant events" (isNtfForJoinOrExitChrm). After users join or exit an Open Channel, the service can notify other members by auto messaging in message format. Enabling this increases message volume.'
+      defaultValue: false
+    set_ntf_for_join_or_exit_chrm:
+      name: set_open_channel_participant_event_auto_messaging
+      description: 'Set the Nexconn Chat Open Channels setting "Enable auto messaging for participant events" (isNtfForJoinOrExitChrm). Notifies other Open Channel members by auto messaging in message format when users join or exit. Enabling this increases message volume.'
+    get_chat_msg_not_in_chrm_is_skip:
+      name: get_open_channel_joined_participant_messaging
+      description: 'Query the Nexconn Chat Open Channels setting "Restrict messaging to joined participants" (chatMsgNotInChrmIsSkip). Prevents users from sending messages to an Open Channel they have not joined.'
+      defaultValue: false
+    set_chat_msg_not_in_chrm_is_skip:
+      name: set_open_channel_joined_participant_messaging
+      description: 'Set the Nexconn Chat Open Channels setting "Restrict messaging to joined participants" (chatMsgNotInChrmIsSkip). Prevents users from sending messages to an Open Channel they have not joined.'
+
+    # === 超级群 ===
+    get_pull_before_join_ug_msg:
+      name: get_community_pre_join_history_access
+      description: 'Query the Nexconn Chat Community Channels setting "Enable pre-join history access by new member" (isPullBeforeJoinUgMsg). When enabled, new members can access group historical messages from before they joined. Requires Chat Pro.'
+      defaultValue: true
+    set_pull_before_join_ug_msg:
+      name: set_community_pre_join_history_access
+      description: 'Set the Nexconn Chat Community Channels setting "Enable pre-join history access by new member" (isPullBeforeJoinUgMsg). Allows new members to access group historical messages from before they joined. Requires Chat Pro.'
+    get_ug_push_limiter:
+      name: get_community_push_notification_frequency
+      description: 'Query the Nexconn Chat Community Channels setting "Push notification frequency" (ugPushLimiter). By default, users receive one push notification per minute in each channel and subchannel. Maximum limit is 60 per minute. Requires Chat Pro.'
+      defaultValue: "{\"alarm\":\"returnErr\",\"global\":{\"minute\":1},\"includes\":{\"push\":{\"minute\":1}}}"
+    set_ug_push_limiter:
+      name: set_community_push_notification_frequency
+      description: 'Set the Nexconn Chat Community Channels setting "Push notification frequency" (ugPushLimiter). limiter can be EWMA, SLIDWINDOW, SINGLEVALUE, or GUAVA; alarm can be all, report, or returnErr. Requires Chat Pro.'
+    get_pull_his_msg_no_ug_grp_member:
+      name: get_community_message_access_restriction
+      description: 'Query the Nexconn Chat Community Channels setting "Restrict message access to members" (isPullHisMsgNoUgGrpMember). Controls whether non-members can access the default Community Channel subchannel RCDefault in the channel list. Requires Chat Pro.'
+      defaultValue: false
+    set_pull_his_msg_no_ug_grp_member:
+      name: set_community_message_access_restriction
+      description: 'Set the Nexconn Chat Community Channels setting "Restrict message access to members" (isPullHisMsgNoUgGrpMember). Controls whether non-members can access the default Community Channel subchannel RCDefault in the channel list. Requires Chat Pro.'
+
+  v2: {}

@@ -1,0 +1,18 @@
+node_modules
+dist
+.DS_Store
+*.local
+.env
+.agents
+.claude
+.env.*
+!.env.example
+
+# Example project dependencies
+example/web/react/node_modules
+
+# Nexconn credentials must never be committed
+**/secrets/
+**/*.secret
+**/*.token
+

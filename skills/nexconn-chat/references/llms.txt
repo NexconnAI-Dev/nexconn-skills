@@ -93,8 +93,10 @@
 - [Multi-device unread sync](/chatsdk-android/message/share-unread-status-between-clients.md): Multi-device unread sync in Nexconn Chat SDK for Android, including sending, handling, storage, and sync behavior.
 - [Receive streaming messages](/chatsdk-android/message/stream-message.md): Receive streaming messages in Nexconn Chat SDK for Android, including sending, handling, storage, and sync behavior.
 - [Send typing indicators](/chatsdk-android/message/typing-status.md): Send typing indicators in Nexconn Chat SDK for Android, including sending, handling, storage, and sync behavior.
-- [Content moderation overview](/chatsdk-android/moderation/overview.md): Overview of moderation in Nexconn Chat SDK for Android, including core concepts, capabilities, and the main implementation workflows.
-- [Profanity filter callback](/chatsdk-android/moderation/sensitive.md): Profanity filter callback in Nexconn Chat SDK for Android, including content filtering and service behavior.
+- [Automatic moderation](/chatsdk-android/moderation/auto-moderation.md): Automatic moderation in Nexconn Chat SDK for Android, including setup, supported scope, moderation results, billing, and webhooks.
+- [Overview](/chatsdk-android/moderation/overview.md): Overview of moderation in Nexconn Chat SDK for Android, including core concepts, capabilities, and the main implementation workflows.
+- [Profanity filter](/chatsdk-android/moderation/profanity-filter.md): Profanity filter in Nexconn Chat SDK for Android, including configuration, behavior, and Server API management.
+- [Profanity filter callback](/chatsdk-android/moderation/profanity-filter-callback.md): Profanity filter callback in Nexconn Chat SDK for Android, including content filtering and service behavior.
 - [Set global do not disturb](/chatsdk-android/notification/do-not-disturb.md): Set global do not disturb in Nexconn Chat SDK for Android, including notification controls, scope, and sync behavior.
 - [Do not disturb overview](/chatsdk-android/notification/do-not-disturb-about.md): Overview of notification settings in Nexconn Chat SDK for Android, including core concepts, capabilities, and the main implementation workflows.
 - [Do not disturb by channel ID](/chatsdk-android/notification/do-not-disturb-by-channel-id.md): Do not disturb by channel ID in Nexconn Chat SDK for Android, including notification controls, scope, and sync behavior.
@@ -128,6 +130,7 @@
 - [Status codes](/chatsdk-flutter/code.md): Reference Nexconn Chat SDK for Flutter status codes to understand return values, diagnose failures, and troubleshoot integration issues.
 - [Create a community channel](/chatsdk-flutter/community-channels/creating-channel.md): Create a community channel in Nexconn Chat SDK for Flutter, including channel structure, permissions, and messaging workflows.
 - [Delete messages](/chatsdk-flutter/community-channels/delete-message.md): Delete messages in Nexconn Chat SDK for Flutter, including channel structure, permissions, and messaging workflows.
+- [Delete a message for all](/chatsdk-flutter/community-channels/delete-message-for-all.md): Delete a community channel message for all in Nexconn Chat SDK for Flutter, including channel structure, permissions, and messaging workflows.
 - [Do not disturb overview](/chatsdk-flutter/community-channels/do-not-disturb-about.md): Overview of community channels in Nexconn Chat SDK for Flutter, including core concepts, capabilities, and the main implementation workflows.
 - [Set DND by subchannel](/chatsdk-flutter/community-channels/do-not-disturb-by-channel-id.md): Set DND by subchannel in Nexconn Chat SDK for Flutter, including channel structure, permissions, and messaging workflows.
 - [Set default DND level](/chatsdk-flutter/community-channels/do-not-disturb-default.md): Set default DND level in Nexconn Chat SDK for Flutter, including channel structure, permissions, and messaging workflows.
@@ -135,7 +138,6 @@
 - [Get message history](/chatsdk-flutter/community-channels/get-history-message.md): Retrieve message history from a community subchannel using BaseChannel.createMessagesQuery() in Nexconn Chat SDK for Flutter.
 - [Community channel overview](/chatsdk-flutter/community-channels/overview.md): Overview of community channels in Nexconn Chat SDK for Flutter, including core concepts, capabilities, and the main implementation workflows.
 - [Community channel service configuration](/chatsdk-flutter/community-channels/platform-config.md): Community channel service configuration in Nexconn Chat SDK for Flutter, including channel structure, permissions, and messaging workflows.
-- [Delete a message](/chatsdk-flutter/community-channels/recall-message.md): Delete a message in Nexconn Chat SDK for Flutter, including channel structure, permissions, and messaging workflows.
 - [Get subchannels](/chatsdk-flutter/community-channels/retrieving-channels.md): Retrieve the list of subchannels under a community channel by calling community.getSubChannels() in Nexconn Chat SDK for Flutter.
 - [Send typing indicators](/chatsdk-flutter/community-channels/typing-indicator.md): Send typing indicators in Nexconn Chat SDK for Flutter, including channel structure, permissions, and messaging workflows.
 - [Unread count](/chatsdk-flutter/community-channels/unread.md): Unread count in Nexconn Chat SDK for Flutter, including channel structure, permissions, and messaging workflows.
@@ -164,8 +166,8 @@
 - [Import the SDK](/chatsdk-flutter/import.md): Import Nexconn Chat SDK for Flutter into your project with the required dependencies, package setup, and supported integration options.
 - [Initialize the SDK](/chatsdk-flutter/init.md): Initialize Nexconn Chat SDK for Flutter with your App Key and runtime options, including environment and data center configuration.
 - [Delete messages](/chatsdk-flutter/message/delete.md): Delete messages in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
+- [Delete a message for all](/chatsdk-flutter/message/delete-for-all.md): Delete a message for all in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
 - [Download media messages](/chatsdk-flutter/message/download.md): Download media messages in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
-- [Download media messages](/chatsdk-flutter/message/download-media-file.md): Download media messages in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
 - [Manage message metadata](/chatsdk-flutter/message/expansion.md): Manage message metadata in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
 - [Get message history](/chatsdk-flutter/message/get-history.md): Use BaseChannel.createMessagesQuery() to create a paginated message query, then call loadNextPage() to load messages.
 - [Insert messages](/chatsdk-flutter/message/insert.md): Insert messages in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
@@ -174,13 +176,14 @@
 - [Mentions (@ messages)](/chatsdk-flutter/message/mentioned-info.md): Mentions (@ messages) in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
 - [Group channel read receipt](/chatsdk-flutter/message/read-receipt-group.md): Group channel read receipt in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
 - [Direct channel read receipt](/chatsdk-flutter/message/read-receipt-private.md): Direct channel read receipt in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
-- [Recall a message](/chatsdk-flutter/message/recall.md): Recall a message in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
 - [Receive messages](/chatsdk-flutter/message/receive.md): Receive messages in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
 - [Search messages](/chatsdk-flutter/message/search.md): Search messages in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
 - [Send a message](/chatsdk-flutter/message/send.md): Send a message in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
 - [Receive streaming messages](/chatsdk-flutter/message/stream-message.md): Receive streaming messages in Nexconn Chat SDK for Flutter, including sending, handling, storage, and sync behavior.
+- [Automatic moderation](/chatsdk-flutter/moderation/auto-moderation.md): Automatic moderation in Nexconn Chat SDK for Flutter, including setup, supported scope, moderation results, billing, and webhooks.
 - [Content moderation overview](/chatsdk-flutter/moderation/overview.md): Overview of moderation in Nexconn Chat SDK for Flutter, including core concepts, capabilities, and the main implementation workflows.
-- [Profanity filter callback](/chatsdk-flutter/moderation/sensitive.md): Profanity filter callback in Nexconn Chat SDK for Flutter, including content filtering and service behavior.
+- [Profanity filter](/chatsdk-flutter/moderation/profanity-filter.md): Profanity filter in Nexconn Chat SDK for Flutter, including configuration, behavior, and Server API management.
+- [Profanity filter callback](/chatsdk-flutter/moderation/profanity-filter-callback.md): Profanity filter callback in Nexconn Chat SDK for Flutter, including content filtering and service behavior.
 - [Set global do not disturb](/chatsdk-flutter/notification/do-not-disturb.md): Set global do not disturb in Nexconn Chat SDK for Flutter, including notification controls, scope, and sync behavior.
 - [Do not disturb overview](/chatsdk-flutter/notification/do-not-disturb-about.md): Overview of notification settings in Nexconn Chat SDK for Flutter, including core concepts, capabilities, and the main implementation workflows.
 - [Set DND by channel](/chatsdk-flutter/notification/do-not-disturb-by-target-id.md): Set DND by channel in Nexconn Chat SDK for Flutter, including notification controls, scope, and sync behavior.
@@ -193,8 +196,8 @@
 - [Open channel overview](/chatsdk-flutter/open-channels/overview.md): Overview of open channels in Nexconn Chat SDK for Flutter, including core concepts, capabilities, and the main implementation workflows.
 - [Open channel service configuration](/chatsdk-flutter/open-channels/platform-config.md): Open channel service configuration in Nexconn Chat SDK for Flutter, including channel access, metadata, and event handling.
 - [Open channel status handler](/chatsdk-flutter/open-channels/status.md): Open channel status handler in Nexconn Chat SDK for Flutter, including channel access, metadata, and event handling.
+- [User-level push notification configuration](/chatsdk-flutter/push/config-by-app-user.md): User-level push notification configuration in Nexconn Chat SDK for Flutter, including push language, detail display, and multi-device push behavior.
 - [Configure message push properties](/chatsdk-flutter/push/msg-pushconfig.md): Configure message push properties in Nexconn Chat SDK for Flutter, including setup, provider integration, testing, and delivery behavior.
-- [Multi-language push templates](/chatsdk-flutter/push/push-template.md): Multi-language push templates in Nexconn Chat SDK for Flutter, including setup, provider integration, testing, and delivery behavior.
 - [Push notification overview](/chatsdk-flutter/push/summary.md): Overview of push notifications in Nexconn Chat SDK for Flutter, including core concepts, capabilities, and the main implementation workflows.
 - [Release notes](/chatsdk-flutter/release-notes.md): Review Nexconn Chat SDK for Flutter release notes, including version updates, fixes, behavior changes, and upgrade considerations.
 - [Manage blocked users](/chatsdk-flutter/user/blacklist.md): Manage blocked users in Nexconn Chat SDK for Flutter, including profiles, relationships, and presence behavior.
@@ -260,8 +263,10 @@
 - [Receive streaming messages](/chatsdk-ios/message/stream-message.md): Receive streaming messages in Nexconn Chat SDK for iOS, including sending, handling, storage, and sync behavior.
 - [Sync messages across devices](/chatsdk-ios/message/sync-across-devices.md): Sync messages across devices in Nexconn Chat SDK for iOS, including sending, handling, storage, and sync behavior.
 - [Send typing indicators](/chatsdk-ios/message/typing-status.md): Send typing indicators in Nexconn Chat SDK for iOS, including channel settings, sync, and unread state behavior.
+- [Automatic moderation](/chatsdk-ios/moderation/auto-moderation.md): Automatic moderation in Nexconn Chat SDK for iOS, including setup, supported scope, moderation results, billing, and webhooks.
 - [Content moderation overview](/chatsdk-ios/moderation/overview.md): Overview of moderation in Nexconn Chat SDK for iOS, including core concepts, capabilities, and the main implementation workflows.
-- [Profanity filter callback](/chatsdk-ios/moderation/sensitive.md): Profanity filter callback in Nexconn Chat SDK for iOS, including content filtering and service behavior.
+- [Profanity filter](/chatsdk-ios/moderation/profanity-filter.md): Profanity filter in Nexconn Chat SDK for iOS, including configuration, behavior, and Server API management.
+- [Profanity filter callback](/chatsdk-ios/moderation/profanity-filter-callback.md): Profanity filter callback in Nexconn Chat SDK for iOS, including content filtering and service behavior.
 - [Set global do not disturb](/chatsdk-ios/notification/do-not-disturb.md): Set global do not disturb in Nexconn Chat SDK for iOS, including notification controls, scope, and sync behavior.
 - [Do not disturb (DND) overview](/chatsdk-ios/notification/do-not-disturb-about.md): Overview of notification settings in Nexconn Chat SDK for iOS, including do not disturb scopes, priority, and related APIs.
 - [Do not disturb by channel ID](/chatsdk-ios/notification/do-not-disturb-by-channel-id.md): Configure do not disturb by channel ID in Nexconn Chat SDK for iOS, including sub-channel notification scope and levels.
@@ -277,10 +282,8 @@
 - [Get open channel info](/chatsdk-ios/open-channels/retrieve-channel-info.md): Get open channel info in Nexconn Chat SDK for iOS, including channel access, metadata, and event handling.
 - [Integrate APNs push notifications](/chatsdk-ios/push/apns.md): Integrate APNs push notifications in Nexconn Chat SDK for iOS, including setup, provider integration, testing, and delivery behavior.
 - [User-level push notification configuration](/chatsdk-ios/push/config-by-app-user.md): User-level push notification configuration in Nexconn Chat SDK for iOS, including setup, provider integration, testing, and delivery behavior.
-- [Customize push notification sounds](/chatsdk-ios/push/customize-apns.md): Customize push notification sounds in Nexconn Chat SDK for iOS, including setup, provider integration, testing, and delivery behavior.
 - [Report push notification statistics](/chatsdk-ios/push/get-push-stats.md): Report push notification statistics in Nexconn Chat SDK for iOS, including setup, provider integration, testing, and delivery behavior.
 - [Configure push notification attributes for messages](/chatsdk-ios/push/msg-pushconfig.md): Configure push notification attributes for messages in Nexconn Chat SDK for iOS, including setup, provider integration, testing, and delivery behavior.
-- [Custom multi-language push notification templates](/chatsdk-ios/push/push-template.md): Custom multi-language push notification templates in Nexconn Chat SDK for iOS, including setup, provider integration, testing, and delivery behavior.
 - [Test APNs push notifications](/chatsdk-ios/push/test-push.md): Test APNs push notifications in Nexconn Chat SDK for iOS, including setup, provider integration, testing, and delivery behavior.
 - [Release notes](/chatsdk-ios/release-notes.md): Review Nexconn Chat SDK for iOS release notes, including version updates, fixes, behavior changes, and upgrade considerations.
 - [Manage blocked users](/chatsdk-ios/user/blacklist.md): Manage blocked users in Nexconn Chat SDK for iOS, including profiles, relationships, and presence behavior.
@@ -303,7 +306,7 @@
 - [Manage tag data](/chatsdk-web/channel/manage-conversation-tags.md): Manage tag data in Nexconn Chat SDK for Web, including channel settings, sync, and unread state behavior.
 - [Multi-device channel status sync](/chatsdk-web/channel/share-conversation-status-between-clients.md): Multi-device channel status sync in Nexconn Chat SDK for Web, including channel settings, sync, and unread state behavior.
 - [Pin a channel](/chatsdk-web/channel/stick-to-top.md): Pin a channel in Nexconn Chat SDK for Web, including channel settings, sync, and unread state behavior.
-- [Sync read status across devices](/chatsdk-web/channel/syncReadStatus.md): Sync read status across devices in Nexconn Chat SDK for Web, including channel settings, sync, and unread state behavior.
+- [Sync unread status across devices](/chatsdk-web/channel/syncReadStatus.md): Clear a channel's unread count on one device and sync the unread status to other devices in Nexconn Chat SDK for Web.
 - [Send typing indicators](/chatsdk-web/channel/typing-status.md): Send typing indicators in Nexconn Chat SDK for Web, including channel settings, sync, and unread state behavior.
 - [Unread message count](/chatsdk-web/channel/unread.md): Unread message count in Nexconn Chat SDK for Web, including channel settings, sync, and unread state behavior.
 - [Status codes](/chatsdk-web/code.md): Reference Nexconn Chat SDK for Web status codes to understand return values, diagnose failures, and troubleshoot integration issues.
@@ -351,8 +354,10 @@
 - [Receive messages](/chatsdk-web/message/receive.md): Receive messages in Nexconn Chat SDK for Web, including sending, handling, storage, and sync behavior.
 - [Send a message](/chatsdk-web/message/send.md): Send a message in Nexconn Chat SDK for Web, including sending, handling, storage, and sync behavior.
 - [Receive streaming messages](/chatsdk-web/message/stream-msg.md): Receive streaming messages in Nexconn Chat SDK for Web, including sending, handling, storage, and sync behavior.
+- [Automatic moderation](/chatsdk-web/moderation/auto-moderation.md): Automatic moderation in Nexconn Chat SDK for Web, including setup, supported scope, moderation results, billing, and webhooks.
 - [Content moderation overview](/chatsdk-web/moderation/overview.md): Overview of moderation in Nexconn Chat SDK for Web, including core concepts, capabilities, and the main implementation workflows.
-- [Profanity filter callback](/chatsdk-web/moderation/sensitive.md): Profanity filter callback in Nexconn Chat SDK for Web, including content filtering and service behavior.
+- [Profanity filter](/chatsdk-web/moderation/profanity-filter.md): Profanity filter in Nexconn Chat SDK for Web, including configuration, behavior, and Server API management.
+- [Profanity filter callback](/chatsdk-web/moderation/profanity-filter-callback.md): Profanity filter callback in Nexconn Chat SDK for Web, including content filtering and service behavior.
 - [Set global do not disturb](/chatsdk-web/notification/do-not-disturb.md): Set global do not disturb in Nexconn Chat SDK for Web, including notification controls, scope, and sync behavior.
 - [Get open channel message history](/chatsdk-web/open-channel/get-history-messages.md): Get open channel message history in Nexconn Chat SDK for Web, including channel access, metadata, and event handling.
 - [Get open channel info](/chatsdk-web/open-channel/get-open-channel-info.md): Get open channel info in Nexconn Chat SDK for Web, including channel access, metadata, and event handling.
@@ -377,14 +382,14 @@
 - [Connect](/chatui-android/connection/connect.md): Configure connect for connection management in Chat UI SDK for Android.
 - [Disconnect](/chatui-android/connection/disconnect.md): Configure disconnect for connection management in Chat UI SDK for Android.
 - [Connection status](/chatui-android/connection/monitor-status.md): Configure connection status for connection management in Chat UI SDK for Android.
-- [Development guide](/chatui-android/connection/multiple-client-sync-config.md): Configure multi-device message synchronization for connection management in Chat UI SDK for Android.
+- [Development guide](/chatui-android/connection/multiple-client-sync-config.md): Configure Message synchronization for connection management in Chat UI SDK for Android.
 - [Multi-platform login](/chatui-android/connection/multiple-platform.md): Configure multiple platform for connection management in Chat UI SDK for Android.
 - [Reconnection and kick policy](/chatui-android/connection/reconnect-kick.md): Configure reconnection and kick policy for connection management in Chat UI SDK for Android.
 - [Delete channels](/chatui-android/customization/conversation-delete.md): Remove one or more channels from the Chat UI SDK for Android channel list without deleting message history.
 - [Get channels](/chatui-android/customization/conversation-get.md): Configure get channels for Chat UI customization in Chat UI SDK for Android.
 - [Customize channel list data processing](/chatui-android/customization/conversation-list-data-processor.md): Configure customize channel list data processing for Chat UI customization in Chat UI SDK for Android.
 - [Sync channel pin and Do Not Disturb status across clients](/chatui-android/customization/conversation-share-status-between-clients.md): Configure sync channel pin and do not disturb status across clients for Chat UI customization in Chat UI SDK for Android.
-- [Customize message long-click menu](/chatui-android/customization/customize-message-long-click.md): Configure customize message long-click menu for Chat UI customization in Chat UI SDK for Android.
+- [Customize message long-click menu](/chatui-android/customization/customize-message-long-click.md): Customize Android message long-click menus, including adding, removing, ordering menu items, and changing multi-select actions.
 - [Custom message types](/chatui-android/customization/message-customize.md): Configure custom message types for Chat UI customization in Chat UI SDK for Android.
 - [Delete messages](/chatui-android/customization/message-delete.md): Configure delete messages for Chat UI customization in Chat UI SDK for Android.
 - [Retrieve message history](/chatui-android/customization/message-get-history.md): Configure retrieve message history for Chat UI customization in Chat UI SDK for Android.
@@ -407,9 +412,9 @@
 - [User online status](/chatui-android/features/online-status.md): Configure user online status for Chat UI feature in Chat UI SDK for Android.
 - [Quick reply](/chatui-android/features/quick-reply.md): Set up quick reply for Chat UI SDK for Android with the required steps and next actions.
 - [Short video messages](/chatui-android/features/sight-message.md): Configure short video messages for Chat UI feature in Chat UI SDK for Android.
-- [Pin Channels](/chatui-android/features/stick-to-top.md): Configure pin channels for Chat UI feature in Chat UI SDK for Android.
+- [Pin Channels](/chatui-android/features/stick-to-top.md): Pin and unpin Android Chat UI channels, show pinned channels in the list, and synchronize pin status across clients.
 - [Typing status](/chatui-android/features/typing-status.md): Configure typing status for Chat UI feature in Chat UI SDK for Android.
-- [Unread count](/chatui-android/features/unread.md): Configure unread count for Chat UI feature in Chat UI SDK for Android.
+- [Unread count](/chatui-android/features/unread.md): Display, clear, and synchronize unread counts in Nexconn Chat UI for Android, including channel badges and multi-device read sync.
 - [Voice messages](/chatui-android/features/voice-message.md): Configure voice messages for Chat UI feature in Chat UI SDK for Android.
 - [Import the SDK](/chatui-android/import.md): Integrate Chat UI SDK for Android into your project using Maven or local module.
 - [Page customization design](/chatui-android/info-entrust/arch_overview.md): Customize profile and relationship management pages in Chat UI SDK for Android.
@@ -428,13 +433,15 @@
 - [User Profile Page](/chatui-android/info-entrust/entrust-user.md): Configure user profile page.
 - [Initialization](/chatui-android/init.md): Initialize the Chat UI SDK with NCChatUI and establish a connection.
 - [Aggregate channels by type](/chatui-android/key-functions/aggregate-conversations.md): Configure aggregate channels by type for Chat UI screen integration in Chat UI SDK for Android.
-- [Channel screen](/chatui-android/key-functions/conversation.md): Configure channel screen for Chat UI screen integration in Chat UI SDK for Android.
-- [Channel list page](/chatui-android/key-functions/conversation-list.md): Configure channel list page for Chat UI screen integration in Chat UI SDK for Android.
+- [Channel screen](/chatui-android/key-functions/conversation.md): Build and customize the Android channel screen, including avatars, message menus, delete behavior, multi-select, and connection tips.
+- [Channel list page](/chatui-android/key-functions/conversation-list.md): Build and customize the Android channel list, including long-press menus, avatars, providers, XML layouts, and item styling.
 - [Customize message item display](/chatui-android/key-functions/customize-message-item.md): Configure customize message item display for Chat UI screen integration in Chat UI SDK for Android.
-- [Input area](/chatui-android/key-functions/input.md): Configure input area for Chat UI screen integration in Chat UI SDK for Android.
-- [Listen to page events](/chatui-android/key-functions/listener.md): Configure listen to page events for Chat UI screen integration in Chat UI SDK for Android.
-- [Development guide](/chatui-android/moderation/overview.md): Understand moderation overview for Chat UI SDK for Android, including scope, behavior, and related tasks.
-- [Development guide](/chatui-android/moderation/sensitive.md): Configure sensitive content interception callback for content moderation in Chat UI SDK for Android.
+- [Input area](/chatui-android/key-functions/input.md): Customize the Android Chat UI input area, including input modes, emoji, extension panel plugins, and adding or removing actions.
+- [Listen to page events](/chatui-android/key-functions/listener.md): Listen to Android Chat UI page events for channel list clicks, long-press menus, message taps, avatars, and quick replies.
+- [Automatic moderation](/chatui-android/moderation/auto-moderation.md): Automatic moderation in Nexconn Chat UI SDK for Android, including setup, supported scope, moderation results, billing, and webhooks.
+- [Overview](/chatui-android/moderation/overview.md): Understand moderation overview for Chat UI SDK for Android, including scope, behavior, and related tasks.
+- [Profanity filter](/chatui-android/moderation/profanity-filter.md): Profanity filter in Nexconn Chat UI SDK for Android, including configuration, behavior, and Server API management.
+- [Development guide](/chatui-android/moderation/profanity-filter-callback.md): Configure sensitive content interception callback for content moderation in Chat UI SDK for Android.
 - [Set channel do not disturb](/chatui-android/notification/by-conversation.md): Configure set channel do not disturb for notification and do not disturb in Chat UI SDK for Android.
 - [Set global Do Not Disturb by time range](/chatui-android/notification/by-time-range.md): Configure set global do not disturb by time range for notification and do not disturb in Chat UI SDK for Android.
 - [Local notifications](/chatui-android/notification/customize-notification-local.md): Configure local notifications for notification and do not disturb in Chat UI SDK for Android.
@@ -451,7 +458,7 @@
 - [Group channel overview](/chatui-android/user/group-overview.md): Understand group pages, group channels, and group data responsibilities in Chat UI SDK for Android.
 - [Group Member User Information](/chatui-android/user/group-userinfo.md): Provide and cache group member nicknames in Chat UI SDK for Android by using NCUserInfoManager and GroupUserInfoProvider.
 - [Monitor user data changes](/chatui-android/user/monitor-user-data.md): Register UserDataObserver callbacks to monitor user, group, and group member profile changes in Chat UI SDK for Android.
-- [User overview](/chatui-android/user/overview.md): Understand user overview for Chat UI SDK for Android, including scope, behavior, and related tasks.
+- [User overview](/chatui-android/user/overview.md): Learn about users in Chat UI SDK for Android, including registration, deactivation, user information, and relationships.
 - [User information](/chatui-android/user/userinfo.md): Provide and cache user nicknames and avatars from your app in Chat UI SDK for Android by using NCUserInfoManager and UserDataProvider.
 
 ## Chat UI SDK for Flutter
@@ -465,18 +472,18 @@
 - [Chat page builders](/chatui-flutter/customization/builder/chat-page.md): Replace the app bar, message rows, header, footer, or empty state in ChatPage using builder callbacks.
 - [Custom message bubble builders](/chatui-flutter/customization/builder/message-bubble.md): Replace the content widget for specific message types using customMessageBubbleBuilders in Nexconn Chat UI for Flutter.
 - [Bubble config](/chatui-flutter/customization/config/bubble.md): Configure message bubble colors, text styles, corner radius, and avatar shape using BubbleConfig in Nexconn Chat UI for Flutter.
-- [Channel page config](/chatui-flutter/customization/config/channel-page.md): Configure the channel list app bar, list behavior, item display, swipe actions, and long-press menu using ChannelConfig in Nexconn Chat UI for Flutter.
-- [Chat page config](/chatui-flutter/customization/config/chat-page.md): Configure the app bar, message list, input area, bubble style, long-press menu, and message hooks in ChatPage using ChatPageConfig.
-- [Message input config](/chatui-flutter/customization/config/input.md): Configure the input area toolbar, extension plugins, emoji panel, mention hooks, voice recording, and permission handling in Nexconn Chat UI for Flutter.
+- [Channel page config](/chatui-flutter/customization/config/channel-page.md): Configure Flutter ChannelPage lists, channel item display, profile data, swipe actions, and long-press channel menus.
+- [Chat page config](/chatui-flutter/customization/config/chat-page.md): Configure Flutter ChatPage message lists, bubbles, input, long-press message menus, send hooks, and received-message callbacks.
+- [Message input config](/chatui-flutter/customization/config/input.md): Configure Flutter message input controls, extension plugins, emoji, mentions, reference previews, permissions, and media actions.
 - [FAQ](/chatui-flutter/faq.md): Troubleshooting guide for common Nexconn Chat UI SDK for Flutter integration issues.
-- [Pinning channels](/chatui-flutter/features/channel-pin.md): Pin and unpin channels to keep important conversations near the top of the channel list in Nexconn Chat UI for Flutter.
-- [Delete message for everyone](/chatui-flutter/features/delete-message-for-all.md): Nexconn Chat UI exposes deleting a message for everyone through ChatProvider.deleteMessageForAll. The default long-press menu shows this action only for sent messages that can be deleted for everyone by the current user and current SDK state.
+- [Pinning channels](/chatui-flutter/features/channel-pin.md): Pin, unpin, and customize channel pin actions in Nexconn Chat UI for Flutter, including long-press and swipe menus.
+- [Delete message for all](/chatui-flutter/features/delete-message-for-all.md): Nexconn Chat UI exposes deleting a message for all through ChatProvider.deleteMessageForAll. The default long-press menu shows this action only for sent messages that can be deleted for all by the current user and current SDK state.
 - [Channel drafts](/chatui-flutter/features/draft.md): Automatically save and restore unsent text drafts per channel using ChatProvider in Nexconn Chat UI for Flutter.
 - [File messages](/chatui-flutter/features/file-message.md): Send, display, and preview file messages using ChatProvider and FilePreviewPage in Nexconn Chat UI for Flutter.
 - [Image and GIF messages](/chatui-flutter/features/image-gif-message.md): Send, display, and preview image and GIF messages using ChatProvider and PhotoPreviewPage in Nexconn Chat UI for Flutter.
 - [Forwarding messages](/chatui-flutter/features/message-forward.md): Forward selected messages individually or as a combined history to another channel using ChatProvider in Nexconn Chat UI for Flutter.
 - [Mentions](/chatui-flutter/features/message-mention.md): Enable @mention support in group channels using mentionResolver or mentionPicker in Nexconn Chat UI for Flutter.
-- [Reference replies](/chatui-flutter/features/message-reference.md): Send reference replies that include a preview of the quoted message using ReferenceMessage in Nexconn Chat UI for Flutter.
+- [Quoted replies](/chatui-flutter/features/message-reference.md): Send reference replies that include a preview of the quoted message using ReferenceMessage in Nexconn Chat UI for Flutter.
 - [Short video messages](/chatui-flutter/features/short-video-message.md): Send, display, and preview short video messages using ChatProvider and ShortVideoPreviewPage in Nexconn Chat UI for Flutter.
 - [Unread counts](/chatui-flutter/features/unread.md): Display and manage channel unread counts, mention counts, and total unread badges in Nexconn Chat UI for Flutter.
 - [Voice messages](/chatui-flutter/features/voice-message.md): Record, send, and play back voice messages using the built-in recorder or a custom recorder in Nexconn Chat UI for Flutter.
@@ -485,11 +492,11 @@
 - [Channel list](/chatui-flutter/key-functions/channel-list.md): Build a channel list with ChannelPage, ChannelProvider, and BaseChannel.
 - [Chat page](/chatui-flutter/key-functions/chat-page.md): Build a message screen with ChatPage, ChatProvider, and BaseChannel.
 - [Input area](/chatui-flutter/key-functions/input.md): Configure the ChatPage input area with MessageInputConfig.
-- [Events and listeners](/chatui-flutter/key-functions/listener.md): Listen to EngineProvider, ChannelProvider, and ChatProvider updates.
+- [Events and listeners](/chatui-flutter/key-functions/listener.md): Listen to Flutter Chat UI engine, channel, and chat updates for connection status, received messages, unread counts, and page callbacks.
 - [Channel Do Not Disturb](/chatui-flutter/notification/by-channel.md): Mute and unmute channels to control alert behavior without blocking message delivery in Nexconn Chat UI for Flutter.
 - [Local notifications](/chatui-flutter/notification/local-notification.md): Show in-process local notifications for new messages using the built-in flutter_local_notifications helper in Nexconn Chat UI for Flutter.
+- [Push Configuration](/chatui-flutter/notification/push-configuration.md): Configure remote push behavior for Nexconn Chat UI for Flutter by using the underlying Chat SDK push configuration docs.
 - [Release notes](/chatui-flutter/release-notes.md): Release notes for Nexconn Chat UI SDK for Flutter, including version history, compatibility, and known issues.
-- [Group information](/chatui-flutter/user/group-info.md): Load group details, manage members, and customize group operations using GroupProvider in Nexconn Chat UI for Flutter.
 - [User profiles](/chatui-flutter/user/userinfo.md): Display user names and avatars in chat and channel list using ChatProfileInfo and NexconnUserProfileProvider in Nexconn Chat UI for Flutter.
 
 ## Chat UI SDK for iOS
@@ -497,9 +504,9 @@
 - [Quickstart](/chatui-ios.md): This guide helps you integrate Chat UI iOS into your app. You'll learn how to import the SDK, initialize it, connect users, display channel lists and message views, and test message delivery.
 - [Configuration guide](/chatui-ios/chatui-config-guide.md): Chat UI provides global configuration options for various features to help you quickly build a chat application.
 - [Status codes](/chatui-ios/code.md): Developer documentation for chat, calling, and server APIs from Nexconn.
-- [Establish a connection](/chatui-ios/connection/connect.md): Before using Chat UI SDK's messaging features, your client application must establish a successful connection to the instant messaging service.
+- [Establish a connection](/chatui-ios/connection/connect.md): Before using Chat UI SDK's messaging features, your client application must establish a successful connection to Chat.
 - [Disconnect from Chat UI](/chatui-ios/connection/disconnect.md): Disconnect from the Chat SDK when your app needs to switch user accounts or log out. The SDK lets you control whether to allow push notifications after disconnection.
-- [Monitor connection status](/chatui-ios/connection/monitor-status.md): The Chat UI SDK provides the NCChatUIConnectionStatusDelegate protocol to monitor IM connection status changes. By listening to these changes, your app can handle different business logic or display status notifications.
+- [Monitor connection status](/chatui-ios/connection/monitor-status.md): Monitor iOS Chat UI connection status with delegates, handle reconnect and token errors, and update connection indicators.
 - [Developer guide](/chatui-ios/connection/multiple-client-sync-config.md): Developer documentation for chat, calling, and server APIs from Nexconn.
 - [Multiple device simultaneous login](/chatui-ios/connection/multiple-platform.md): Developer documentation for chat, calling, and server APIs from Nexconn.
 - [Reconnection mechanism and reconnection kick strategy](/chatui-ios/connection/reconnect-kick.md): Automatic reconnection mechanism
@@ -511,19 +518,19 @@
 - [Intercept messages](/chatui-ios/customization/message-intercept.md): The Chat UI SDK allows intercepting messages before sending, after sending, and upon receiving.
 - [Receive messages](/chatui-ios/customization/message-receive.md): You can listen to messages received by the SDK through message event observers or message policy delegates, then perform corresponding business operations.
 - [Send messages](/chatui-ios/customization/message-send.md): Chat UI's built-in channel pages provide functionality and UI for sending various message types (some message types require plugin support). When you need to send messages in custom pages, use the message sending methods in the Chat UI core class NCChatUI. These methods not only send messages but also trigger updates in Chat UI's built-in pages.
-- [Message multi-selection](/chatui-ios/customization/multi-select.md): Chat UI channel pages support long-press message multi-selection functionality.
+- [Message multi-selection](/chatui-ios/customization/multi-select.md): Customize iOS message multi-selection, including long-press selection state, selected messages, and bottom toolbar actions.
 - [Channel drafts](/chatui-ios/features/draft.md): Chat UI supports channel draft functionality.
 - [Edit messages](/chatui-ios/features/edit-message.md): Chat UI supports message editing, allowing users to modify their successfully sent messages.
 - [Emoji](/chatui-ios/features/emoticon.md): You can send emoji expressions in the Chat UI input area. Tap the emoji (☺) button in the input bar to expand the emoji panel, which supports sending emoji expressions. Emoji messages will appear in the message list component of the channel page.
 - [File messages](/chatui-ios/features/file-message.md): You can send file messages using the built-in file plugin in Chat UI. These messages will appear in the message list component of the channel page. By default, the file plugin sends messages containing the file message content object NCFileMessage .
 - [Image and GIF messages](/chatui-ios/features/image-gif-message.md): Users can send image and GIF messages through the built-in image plugin in Chat UI. These messages appear in the message list component of the channel page. The SDK sends messages containing the following content objects by default:
 - [Forward messages](/chatui-ios/features/message-forward.md): Chat UI supports forwarding single messages and provides two forwarding modes for multiple messages: individual forwarding and combined forwarding. Users can forward messages from a channel to other channels. Forwarded messages will appear in the message list component of the target channel.
-- [Message mentions](/chatui-ios/features/message-mention.md): Mentions (@) are a common feature in group channels that allow you to notify specific users or all group members within a channel, enhancing message visibility. When using the mention feature, the message content includes an additional [NCMentionedInfo] object. Chat UI enables mentions by default.
+- [Message mentions](/chatui-ios/features/message-mention.md): Use @mentions in Nexconn Chat UI for iOS group channels, including member data, custom pickers, and mention settings.
 - [Per-message read receipts](/chatui-ios/features/message-receipt.md): - New AppKeys automatically enable per-message read receipts, making the legacy channel-level read receipts obsolete.
-- [Message reference and reply](/chatui-ios/features/message-reference.md): Chat UI supports message reference and reply functionality, allowing users to reply to specific messages within a channel. Referenced messages appear in the message list component of the channel view. By default, the reference feature sends messages containing a [NCReferenceMessage] object. Use NCMessageType.reference when you need the message type identifier.
+- [Message reference and reply](/chatui-ios/features/message-reference.md): Use message reference and reply in Nexconn Chat UI for iOS, including reference messages, display behavior, and disabling replies.
 - [User online status](/chatui-ios/features/online-status.md): Feature description
 - [Sight message](/chatui-ios/features/sight-message.md): Users can send sight messages through the Chat UI gallery (local photo album) or the sight plugin. These messages appear in the message list component of the channel page. By default, the plugin sends messages containing the sight message content object NCShortVideoMessage .
-- [Pin a channel](/chatui-ios/features/stick-to-top.md): Chat UI supports displaying pinned channels at the top of the channel list.
+- [Pin a channel](/chatui-ios/features/stick-to-top.md): Pin and unpin channels in Nexconn Chat UI for iOS, including pinned list display, SDK pin APIs, and status sync.
 - [Stream messages](/chatui-ios/features/stream-message.md): Chat UI supports stream messages for continuous message delivery from the server.
 - [Theme customization](/chatui-ios/features/theme-customization.md): Chat UI supports theme customization. The current iOS SDK exposes one built-in theme (Lively) and allows creating custom themes based on it.
 - [Typing status](/chatui-ios/features/typing-status.md): The typing status feature provides visual feedback when other users are composing messages. When a user is typing, the title bar displays "User is typing" until the message is sent or the text is completely deleted.
@@ -546,26 +553,26 @@
 - [User profile page](/chatui-ios/info-entrust/entrust-user.md): The user profile page displays basic user information. When opened, the SDK retrieves and shows user data from the database. Chat UI provides NCProfileViewController, a profile page class based on UIKit's UITableView, which differentiates between current user and other user profiles by initializing with different view models.
 - [Initialize the SDK](/chatui-ios/init.md): Initialize the SDK before you use any other Chat UI feature.
 - [Internationalization](/chatui-ios/internationalization.md): The Chat UI SDK supports three languages by default: Simplified Chinese, English, and Arabic.
-- [Channel view](/chatui-ios/key-functions/conversation.md): The channel view serves as the primary chat interface in the application, composed of two main components: the message list and the input area. Chat UI provides the NCChannelViewController class, which implements the channel view based on UIKit's UIViewController.
-- [Channel list page](/chatui-ios/key-functions/conversation-list.md): The Chat UI SDK generates channels based on messages in the local database. The channel list page displays all local channels from the current user's device. When the SDK's local message database generates a message, the SDK automatically creates the corresponding channel and sorts them in reverse chronological order, with pinned channels appearing first.
+- [Channel view](/chatui-ios/key-functions/conversation.md): Build and customize the iOS channel view, including avatars, sender names, input behavior, message deletion, and cell display.
+- [Channel list page](/chatui-ios/key-functions/conversation-list.md): Build and customize the iOS channel list, including channel types, avatars, connection status, custom cells, and selection behavior.
 - [Customize message display styles](/chatui-ios/key-functions/customize-message-item.md): The Chat UI SDK controls message display styles in channels through message display templates. All message templates in Chat UI inherit from NCMessageCell. You can modify the display template for specific message types to achieve personalized message styling.
 - [Input area](/chatui-ios/key-functions/input.md): The Chat UI input area is managed by NCChatSessionInputBarControl, which integrates text input, voice, emoji, extension panels, and @mentions by default.
-- [Page event listeners](/chatui-ios/key-functions/listener.md): Chat UI provides two types of listeners:
-- [Developer guide](/chatui-ios/moderation/overview.md): Developer documentation for chat, calling, and server APIs from Nexconn.
+- [Page event listeners](/chatui-ios/key-functions/listener.md): Listen to iOS Chat UI events for connection status, network changes, message receive/delete events, send interception, and page actions.
+- [Automatic moderation](/chatui-ios/moderation/auto-moderation.md): Automatic moderation in Nexconn Chat UI SDK for iOS, including setup, supported scope, moderation results, billing, and webhooks.
+- [Content moderation overview](/chatui-ios/moderation/overview.md): Developer documentation for chat, calling, and server APIs from Nexconn.
+- [Profanity filter](/chatui-ios/moderation/profanity-filter.md): Profanity filter in Nexconn Chat UI SDK for iOS, including configuration, behavior, and Server API management.
 - [Developer guide](/chatui-ios/moderation/sensitive.md): Developer documentation for chat, calling, and server APIs from Nexconn.
 - [Set do not disturb for channels](/chatui-ios/notification/by-conversation.md): - This document describes how to set do not disturb using Chat SDK.
 - [Set global do not disturb](/chatui-ios/notification/by-time-range.md): The client can configure a silent notification time window to implement global do not disturb functionality. This feature sets a recurring daily time window that remains effective until modified or removed.
 - [Local notifications](/chatui-ios/notification/customize-notification-local.md): Chat UI provides built-in local notification creation and display behavior to help developers quickly implement application features.
 - [Integrate APNs remote push notifications](/chatui-ios/push/apns.md): Developer documentation for chat, calling, and server APIs from Nexconn.
 - [Configure push notifications per user](/chatui-ios/push/config-by-app-user.md): Developer documentation for chat, calling, and server APIs from Nexconn.
-- [Customize remote push notification sounds](/chatui-ios/push/customize-apns.md): Developer documentation for chat, calling, and server APIs from Nexconn.
 - [Report push notification statistics](/chatui-ios/push/get-push-stats.md): Developer documentation for chat, calling, and server APIs from Nexconn.
 - [Configure message push properties](/chatui-ios/push/msg-pushconfig.md): Developer documentation for chat, calling, and server APIs from Nexconn.
-- [Customize multilingual push templates](/chatui-ios/push/push-template.md): Developer documentation for chat, calling, and server APIs from Nexconn.
 - [Test APNs remote push](/chatui-ios/push/test-push.md): Developer documentation for chat, calling, and server APIs from Nexconn.
 - [Release notes](/chatui-ios/release-notes.md): Review the latest Chat UI SDK for iOS release notes, including capabilities and upgrade notes.
-- [Group channel overview](/chatui-ios/user/group-overview.md): Group channels enable multi-user communication in instant messaging applications, typically involving two or more users. NEXCONN group channel service provides rich member management and mute features, supports offline message push and historical message roaming, and is suitable for interest groups, work teams, and customer service scenarios. Chat UI offers ready-to-use group channel UI components.
-- [User overview](/chatui-ios/user/overview.md): App users must connect to NEXCONN services to use instant messaging. In NEXCONN, a user is any app user who holds a valid access token and uses the instant messaging service.
+- [Group channel overview](/chatui-ios/user/group-overview.md): Group channels enable multi-user communication, typically involving two or more users. The Nexconn Chat group channel service provides rich member management and mute features, supports offline message push and historical message roaming, and is suitable for interest groups, work teams, and customer service scenarios. Chat UI offers ready-to-use group channel UI components.
+- [User overview](/chatui-ios/user/overview.md): App users must connect to Chat to send and receive messages. A user is an app user who holds a valid access token issued by the Nexconn server and connects to Chat.
 - [User information](/chatui-ios/user/userinfo.md): Chat UI uses the managed information service by default to display user, group, and group member information in the channel list, chat page, group info page, and @mention selection page. In the default mode, you don't need to implement app-side profile data sources.
 
 ## Chat UI SDK for Web
@@ -581,16 +588,16 @@
 - [Layout controls](/chatui-web/chat-ui/layout.md): Control the built-in Web chat shell with setChannelBarSwitch, setChannelDetailBackSwitch, and setChannelBarTitle.
 - [Message bubbles](/chatui-web/chat-ui/message-bubble.md): MessageBubbleConfig and BubbleLayout; set before ready(); note redius spelling from SDK.
 - [Message menu](/chatui-web/chat-ui/message-menu.md): MessageMenuID, cloneMessageMenu, setMessageMenu, and MESSAGE_MENU_ITEM_CLICK; i18n example with en_US and en_UK.
-- [Feature switches](/chatui-web/chat-ui/switch.md): ChatUICommand with setCommandSwitch and getCommandSwitch before ready().
+- [Feature switches](/chatui-web/chat-ui/switch.md): Configure ChatUICommand switches: SHOW_CONNECTION_STATUS_IN_CHANNEL_LIST for connection hints, SHOW_MESSAGE_STATE for message states, MENTION_ALL for @all, PROMPT_SENDER_WHEN_QUOTE_MESSAGE for quote mentions, and DELETE_MESSAGES_WHILE_DELETE_CHANNEL for clearing message history when deleting channels.
 - [Components overview](/chatui-web/components.md): Web Components layout for ChatUI: provider tags, built-in message elements, and the custom-message tag prefix.
 - [Event listeners](/chatui-web/event.md): Listen to ChatUIEvents on NCChatUIApplication, and use preventDefault, stopImmediatePropagation, or sendResult where supported.
 - [Localization](/chatui-web/localization.md): Configure default language, switch UI language, and register custom language packs for ChatUI SDK for Web.
 - [Mobile push](/chatui-web/push.md): Use setPushConfigHook on NCChatUIApplication to customize push title and body before messages are sent.
 - [Send your first message](/chatui-web/quickstart.md): Integrate ChatUI SDK for Web with npm or pnpm, initialize Nexconn Chat and ChatUI, connect, and show the chat UI.
 - [Release notes](/chatui-web/release-notes.md): ChatUI SDK for Web version history, package versions, and migration notes.
-- [Group overview](/chatui-web/user/group-overview.md): Group channels in ChatUI: server-managed lifecycle and ServiceHooks for member display data.
+- [Group overview](/chatui-web/user/group-overview.md): Group channels in ChatUI, including Chat SDK and Server API links for group management.
 - [Hooks](/chatui-web/user/hooks.md): ServiceHooks for reqUserProfiles, reqGroupProfiles, reqSystemProfiles, and reqGroupMembers in ChatUI SDK.
-- [User overview](/chatui-web/user/overview.md): Tokens, registration, and profiles for Nexconn Chat with ChatUI SDK; profiles come from ServiceHooks.
+- [User overview](/chatui-web/user/overview.md): Tokens, registration, ServiceHooks, and Chat SDK user profile links for ChatUI SDK.
 - [Data updates](/chatui-web/user/update.md): updateUserProfile, updateGroupProfile, updateUserOnlineStatus, and group member APIs after ready().
 
 ## Guides
@@ -727,9 +734,10 @@
 - [Send a system channel message](/platform-chat-api/message/system/send-private.md): Sending a system channel message in Nexconn Platform Chat API for system, with request and response details.
 - [Broadcast by package name](/platform-chat-api/message/system/send-push-by-package.md): Send a system channel message and push notification to all users of a specific app package (e.g., a student app vs.
 - [Broadcast to tagged users](/platform-chat-api/message/system/send-push-by-tag.md): Send a system channel message and push notification to users matching specified tags with Nexconn Platform Chat API.
+- [Automatic moderation](/platform-chat-api/moderation/auto-moderation.md): Automatic moderation for Nexconn Chat, including setup, supported scope, moderation results, billing, and moderation result webhooks.
 - [Add profanity words in batch](/platform-chat-api/moderation/batch-add-sensitive-word.md): Add multiple profanity words to the filter list in a single request with Nexconn Platform Chat API.
 - [Remove profanity words in batch](/platform-chat-api/moderation/batch-remove-sensitive-word.md): Remove multiple profanity words from the filter list in a single request with Nexconn Platform Chat API.
-- [Content moderation overview](/platform-chat-api/moderation/overview.md): Get started with Nexconn Platform Chat API, including authentication, request format, key concepts, and your first API call.
+- [Overview](/platform-chat-api/moderation/overview.md): Overview of content moderation options for Nexconn Chat, including the profanity filter, automatic moderation, and pre-messaging webhooks.
 - [List profanity words](/platform-chat-api/moderation/query-sensitive-word.md): Listing profanity words in Nexconn Platform Chat API for moderation, with request and response details.
 - [Remove a profanity word](/platform-chat-api/moderation/remove-sensitive-word.md): Removing a profanity word in Nexconn Platform Chat API for moderation, with request and response details.
 - [Ban a participant](/platform-chat-api/open-channel/block/block-user.md): Banning a participant in Nexconn Platform Chat API for open channels, with request and response details.
@@ -816,6 +824,7 @@
 - [Group channel changed](/platform-chat-api/webhook/group-channel/changed.md): Group channel changed in Nexconn Platform Chat API for webhooks, with request and response details.
 - [Group channel operation](/platform-chat-api/webhook/group-channel/operation.md): Group channel operation in Nexconn Platform Chat API for webhooks, with request and response details.
 - [Message deleted](/platform-chat-api/webhook/message/delete.md): Message deleted in Nexconn Platform Chat API for webhooks, with request and response details.
+- [Moderation results](/platform-chat-api/webhook/message/moderation.md): Moderation result events fire when automatic moderation blocks or flags a message as suspected content.
 - [Pre-messaging](/platform-chat-api/webhook/message/pre-messaging.md): Pre-messaging events fire **before** a message is delivered to its recipients with Nexconn Platform Chat API.
 - [Message sent](/platform-chat-api/webhook/message/send.md): The message:send event fires after a message is successfully sent and accepted by Nexconn, regardless of channel type.
 - [Open channel metadata update](/platform-chat-api/webhook/open-channel/metadata-update.md): Open channel metadata update in Nexconn Platform Chat API for webhooks, with request and response details.

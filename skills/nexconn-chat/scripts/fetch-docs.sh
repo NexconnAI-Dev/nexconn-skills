@@ -32,7 +32,7 @@ CACHE_DIR="${REFERENCES_DIR}/cache"
 MAX_RETRIES=3
 FORCE=0
 # Identify requests as originating from this skill (sent on every curl call).
-CURL_HEADERS=(-A "nexconn-chat-skill/1.0 (fetch-docs)")
+CURL_HEADERS=(-A "nexconn-chat-skill/1.0.0 (fetch-docs)")
 # Cache staleness threshold in days. 0 = never expire (legacy permanent cache).
 DEFAULT_MAX_AGE_DAYS=14
 MAX_AGE_DAYS="${DEFAULT_MAX_AGE_DAYS}"

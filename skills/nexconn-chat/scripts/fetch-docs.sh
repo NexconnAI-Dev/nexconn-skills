@@ -34,7 +34,9 @@ FORCE=0
 # Identify requests as originating from this skill (sent on every curl call).
 CURL_HEADERS=(-A "nexconn-chat-skill/1.0.0 (fetch-docs)")
 # Cache staleness threshold in days. 0 = never expire (legacy permanent cache).
-DEFAULT_MAX_AGE_DAYS=14
+# llms.txt index: 1 day, other docs: 7 days
+INDEX_MAX_AGE_DAYS=1
+DEFAULT_MAX_AGE_DAYS=7
 MAX_AGE_DAYS="${DEFAULT_MAX_AGE_DAYS}"
 
 # Curated prefetch sets. Edit these lists when official paths change.
@@ -161,12 +163,17 @@ download_one() {
 download_index() {
   local output="${REFERENCES_DIR}/llms.txt"
   local url="${BASE_URL}/llms.txt"
+  # Temporarily override MAX_AGE_DAYS for index check
+  local saved_max_age="${MAX_AGE_DAYS}"
+  MAX_AGE_DAYS="${INDEX_MAX_AGE_DAYS}"
   if cache_is_fresh "${output}"; then
+    MAX_AGE_DAYS="${saved_max_age}"
     echo "Using cached file: ${output}"
     return 0
   fi
+  MAX_AGE_DAYS="${saved_max_age}"
   if [ -f "${output}" ]; then
-    echo "Cached index is stale (older than ${MAX_AGE_DAYS}d), refreshing: ${output}"
+    echo "Cached index is stale (older than ${INDEX_MAX_AGE_DAYS}d), refreshing: ${output}"
   fi
   local tmp="${output}.tmp.$$"
   trap 'rm -f "${tmp}"' RETURN

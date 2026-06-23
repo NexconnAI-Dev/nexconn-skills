@@ -115,8 +115,8 @@ Request type definitions:
 
 Before scope check, rewrite user wording into Nexconn's official terms when the request contains ambiguous, non-standard, or cross-product terminology:
 
-1. Search `references/llms.txt` (with `rg`) for `Chat glossary` and `Call glossary` paths.
-2. From the skill root, fetch glossary: `bash scripts/fetch-docs.sh <path>`. Also fetch Call glossary if user mentions calls, audio/video, meetings, RTC, or any cross-boundary term.
+1. Search `references/llms.txt` (with `rg`) for `Chat glossary` and `Call glossary` paths. If `references/llms.txt` is missing or older than 1 day, run `bash scripts/fetch-docs.sh` from the skill root to download/refresh the remote index, then retry the search.
+2. From the skill root, fetch glossary: `bash scripts/fetch-docs.sh <path>`. Also fetch Call glossary if user mentions calls, audio/video, meetings, RTC, or any cross-boundary term. Documents are cached under `references/cache/` with a 7-day expiry.
 3. Read cached Markdown under `references/cache/`.
 4. Keep user's business intent intact. If a normalized term changes scope, mention it once.
 5. If mapping is uncertain, ask one short clarifying question.
@@ -142,6 +142,8 @@ Only load a reference file when its trigger condition is met. Do NOT preload all
 ## llms.txt search cheat sheet
 
 `llms.txt` is large (~800 lines). Always search with `rg` rather than reading top-to-bottom. Common starting points:
+
+If `references/llms.txt` is missing, run `bash scripts/fetch-docs.sh` from the skill root to download `https://docs.nexconn.ai/llms.txt`, then retry the `rg` search. The index is cached with a 1-day expiry; the script automatically refreshes stale copies. If the download fails because network access is unavailable, continue with local references and mark missing doc paths as pending verification.
 
 | Need | `rg` keyword | Likely path prefix |
 | --- | --- | --- |

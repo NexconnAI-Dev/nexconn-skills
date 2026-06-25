@@ -38,9 +38,9 @@ Chat UI only ships built-in support for a subset of channel types per platform. 
 | Platform | Direct | Group | Community | Open | System (read-only) |
 | --- | --- | --- | --- | --- | --- |
 | Web      | ✅ | ✅ | ❌ Use Chat SDK | ❌ Use Chat SDK | ✅ |
-| Android  | ✅ | ✅ | ⚠️ Unverified → Chat SDK | ❌ Use Chat SDK | ✅ |
-| iOS      | ✅ | ✅ | ⚠️ Unverified → Chat SDK | ❌ Use Chat SDK | ✅ |
-| Flutter  | ✅ | ✅ | ⚠️ Unverified → Chat SDK | ❌ Use Chat SDK | ✅ |
+| Android  | ✅ | ✅ | ❌ Use Chat SDK | ❌ Use Chat SDK | ✅ |
+| iOS      | ✅ | ✅ | ❌ Use Chat SDK | ❌ Use Chat SDK | ✅ |
+| Flutter  | ✅ | ✅ | ❌ Use Chat SDK | ❌ Use Chat SDK | ✅ |
 
 If the request mixes covered and uncovered channels (e.g. Web Group + Open), recommend Chat UI for the covered part and Chat SDK for the rest, and call out the split explicitly.
 

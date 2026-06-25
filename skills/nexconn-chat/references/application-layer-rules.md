@@ -64,7 +64,7 @@ Common triggers:
 
 Implementation rules:
 - Always store the mention as structured metadata on the outbound message (mentioned user IDs, plus the literal text), not just as plain text. Otherwise downstream features (mention notifications, "@me" filter) will break.
-- Only enable mention triggers in channel types that support mentions (Group ✅, Community ✅, Direct ❌, Open ❌); see the channel feature matrix in `channel-guide.md`.
+- Only enable mention triggers in channel types that support mentions (Group ✅, Community ✅, Direct ❌, Open ❌); see the channel feature matrix at [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic).
 - For Chat UI Web, prefer the documented mention insertion API rather than directly mutating the composer DOM.
 
 ## Channel-list filtering pattern
@@ -76,7 +76,7 @@ When the product wants to show only some channel types (e.g. only Group), keep f
 - ❌ Do not delete the underlying channels to make them disappear.
 - ❌ Do not unsubscribe from message events for the hidden channels — unread counts and notifications will silently break.
 
-If the user's intent is "really get rid of those channels" (not just hide), confirm whether they mean leave-channel or dissolve-channel (see `channel-guide.md` terminology section).
+If the user's intent is "really get rid of those channels" (not just hide), confirm whether they mean leave-channel or dissolve-channel (see the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic) terminology section).
 
 ## Avatar / bubble visual rules
 

@@ -18,10 +18,10 @@ Use this skill as the entry point for Nexconn Chat work. Route the request, conf
 
 | Building…                              | Recommended approach          | Details                               |
 | -------------------------------------- | ----------------------------- | ------------------------------------- |
-| 1v1 private conversations              | Chat SDK/UI + Direct Channel  | `channel-guide.md`         |
-| Small groups, customer service (≤3000) | Chat SDK/UI + Group Channel   | `channel-guide.md`         |
-| Large communities, forums, guilds      | Chat SDK + Community Channel  | `channel-guide.md`         |
-| Live chat rooms, temporary events      | Chat SDK + Open Channel       | `channel-guide.md`         |
+| 1v1 private conversations              | Chat SDK/UI + Direct Channel  | [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic)         |
+| Small groups, customer service (≤3000) | Chat SDK/UI + Group Channel   | [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic)         |
+| Large communities, forums, guilds      | Chat SDK + Community Channel  | [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic)         |
+| Live chat rooms, temporary events      | Chat SDK + Open Channel       | [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic)         |
 | Quick launch, standard IM experience   | Chat UI                       | `integration-workflow.md`  |
 | Custom UI, deep customization          | Chat SDK                      | `integration-workflow.md`  |
 | Platform-specific setup (iOS / Android / Flutter / Web) | Read platform notes for that platform | `platform-setup/index.md` |
@@ -46,7 +46,7 @@ If the request mixes covered and uncovered channels (e.g. Web Group + Open), rec
 
 ## Channel capabilities
 
-For any "does <channel> support <capability>" question (member limits, offline storage/push, @ mentions, read receipts, unread count, edit/reply/forward, delete-for-me vs delete-for-everyone, channel deletion vs server-side dissolve, sub-channels, pinning, reliability), load `channel-guide.md` — it holds the channel feature matrix. Capabilities not documented there (e.g. message pinning, emoji reactions, presence/last-seen) are unverified: fetch the relevant doc with `scripts/fetch-docs.sh` or treat them as application-layer (see `references/application-layer-rules.md`) before promising them.
+For any "does <channel> support <capability>" question (member limits, offline storage/push, @ mentions, read receipts, unread count, edit/reply/forward, delete-for-me vs delete-for-everyone, channel deletion vs server-side dissolve, sub-channels, pinning, reliability), refer to the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic) — it holds the channel feature matrix. Capabilities not documented there (e.g. message pinning, emoji reactions, presence/last-seen) are unverified: fetch the relevant doc with `scripts/fetch-docs.sh` or treat them as application-layer (see `references/application-layer-rules.md`) before promising them.
 
 Two recurring traps when answering:
 - *Channel deletion* removes the conversation from the current user's list; *Dissolve channel* removes the channel server-side for everyone. Do not conflate.
@@ -130,9 +130,8 @@ Only load a reference file when its trigger condition is met. Do NOT preload all
 | File | Purpose | Load when |
 | --- | --- | --- |
 | `integration-workflow.md` | Full execution workflow: project ID, confirmation, docs, implementation, testing, todo | Request is Integration type |
-| `platform-setup/<platform>.md` | Navigation only: per-platform (`web`/`android`/`ios`/`flutter`) doc-path index plus cross-doc difference flags (e.g. iOS vs Android pin UI, iOS data-center default). Channel coverage lives in SKILL.md; the channel capability matrix lives in `channel-guide.md`; start from `platform-setup/index.md` | Target platform is known and you need its doc map or platform-specific difference flags |
+| `platform-setup/<platform>.md` | Navigation only: per-platform (`web`/`android`/`ios`/`flutter`) doc-path index plus cross-doc difference flags (e.g. iOS vs Android pin UI, iOS data-center default). Channel coverage lives in SKILL.md; the channel capability matrix is available at [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic); start from `platform-setup/index.md` | Target platform is known and you need its doc map or platform-specific difference flags |
 | `credentials-and-token.md` | App Key, App Secret, Token, security rules | Handling credentials or security-sensitive guidance |
-| `channel-guide.md` | Channel capabilities, limits, feature matrix, comparisons | User asks about channel differences, limits, or tradeoffs |
 | `application-layer-rules.md` | Application-level policies (edit window, recall window, mention triggers, etc.) | Request includes time-window, character-limit, or trigger-rule logic that the SDK does not enforce |
 | `feature-pattern-map.md` | Common modern-IM feature → Nexconn classification (self chat, scheduled, reactions, stickers, voice, link preview, folders, presence, etc.) | Screenshot/mockup contains modern IM features beyond the basic message timeline |
 | `image-analysis-guide.md` | Screenshot/mockup → SDK feature mapping | User's message contains IM screenshots or visual material |

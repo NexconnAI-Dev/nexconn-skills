@@ -68,7 +68,6 @@ nexconn-skills/
 │   └── nexconn-chat/
 │       ├── SKILL.md                    # Main skill documentation
 │       ├── references/
-│       │   ├── channel-guide.md        # Detailed channel type comparison
 │       │   ├── llms.txt                # Official documentation index
 │       │   └── cache/                  # Cached remote docs
 │       └── scripts/
@@ -87,7 +86,7 @@ nexconn-skills/
 | Large communities, forums, guilds, organizations | Community Channels | No member limit, supports sub-channels |
 | Live chat rooms, real-time interaction, temporary events | Open Channels | Online-only, high concurrency |
 
-For a detailed capability comparison, see [skills/nexconn-chat/references/channel-guide.md](skills/nexconn-chat/references/channel-guide.md)
+For a detailed capability comparison, see [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic)
 
 ## 📖 Related resources
 

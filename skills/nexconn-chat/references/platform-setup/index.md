@@ -2,7 +2,7 @@
 
 Each platform file is **navigation only**: it points to the official docs to fetch and flags cross-doc differences (e.g. iOS has no built-in pin/unpin UI while Android does). It deliberately does **not** repeat single-doc facts — those live in the docs and are fetched on demand.
 
-Channel coverage is **not** here either — it lives in SKILL.md. The channel capability matrix lives in `channel-guide.md`, the source of truth for per-channel capabilities.
+Channel coverage is **not** here either — it lives in SKILL.md. The channel capability matrix is available at [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic), the source of truth for per-channel capabilities.
 
 Once the target platform is known, open that platform's file for the doc map and difference flags:
 

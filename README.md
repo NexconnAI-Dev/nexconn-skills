@@ -89,17 +89,6 @@ nexconn-skills/
 
 For a detailed capability comparison, see [skills/nexconn-chat/references/channel-guide.md](skills/nexconn-chat/references/channel-guide.md)
 
-## 🔧 SDK selection
-
-| Choice | Supported platforms | Best for |
-| --- | --- | --- |
-| **Chat SDK** | Android / iOS / Web / Flutter | Custom UI, existing design mockups, deep interaction customization |
-| **Chat UI** | Android / iOS / Web | Fast launch, no desire to build your own UI, standard IM experience is enough |
-
-**Decision priority:**
-- Existing mature UI framework or design system → prefer Chat SDK
-- MVP / Demo / out-of-the-box → prefer Chat UI
-
 ## 📖 Related resources
 
 - [Nexconn official documentation](https://docs.nexconn.ai/)

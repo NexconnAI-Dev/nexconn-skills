@@ -86,7 +86,7 @@ nexconn-skills/
 | Large communities, forums, guilds, organizations | Community Channels | No member limit, supports sub-channels |
 | Live chat rooms, real-time interaction, temporary events | Open Channels | Online-only, high concurrency |
 
-For a detailed capability comparison, see [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic)
+For a detailed capability comparison, see [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md)
 
 ## 📖 Related resources
 

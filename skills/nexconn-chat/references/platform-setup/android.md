@@ -1,6 +1,6 @@
 # Platform Notes — Android
 
-This file is **navigation only** — it points to the docs to fetch and flags cross-doc differences. Channel coverage lives in SKILL.md; the channel capability matrix is available at [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic); per-doc descriptions and single-doc facts live in the docs themselves. Run commands from the skill root: `rg chatui-android references/llms.txt`, then `bash scripts/fetch-docs.sh <path>`. The ⚠️ convention is defined in SKILL.md.
+This file is **navigation only** — it points to the docs to fetch and flags cross-doc differences. Channel coverage lives in SKILL.md; the channel capability matrix is available at [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md); per-doc descriptions and single-doc facts live in the docs themselves. Run commands from the skill root: `rg chatui-android references/llms.txt`, then `bash scripts/fetch-docs.sh <path>`. The ⚠️ convention is defined in SKILL.md.
 
 ## Cross-doc differences worth knowing before you fetch
 

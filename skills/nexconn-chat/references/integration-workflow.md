@@ -40,7 +40,7 @@ Required inputs before writing integration code: **Platform**, **SDK selection**
 
 Infer from project files first (see Project Identification above). If a missing value can be inferred from project files or the user's wording, state the inference. If it cannot be inferred, ask the user.
 
-- Refer to the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic) when limits, feature support, or tradeoffs matter.
+- Refer to the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md) when limits, feature support, or tradeoffs matter.
 - Do not repeat questions for information the user already gave.
 - If multiple channel types are needed, recommend a combination and explain the responsibility of each.
 - If the project already has Nexconn Chat integration code (initialization, connection, channel usage), treat existing choices as confirmed. Only ask about values that are new or changing.
@@ -162,7 +162,7 @@ Use these status values:
 - **Not implemented**: feasible but not included in this generation; can be added later.
 - **Not supported**: Chat UI capability matrix explicitly marks as unsupported on the target platform.
 - **Out of scope**: belongs to a different product (e.g., Nexconn Call) or requires server-side-only work.
-- **Pending review**: capability is requested but not yet documented in this skill (e.g. message pinning, emoji reactions, presence/last-seen — capabilities absent from the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic) feature matrix; see also `references/feature-pattern-map.md`). Treat as application-layer with TODO until verified.
+- **Pending review**: capability is requested but not yet documented in this skill (e.g. message pinning, emoji reactions, presence/last-seen — capabilities absent from the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md) feature matrix; see also `references/feature-pattern-map.md`). Treat as application-layer with TODO until verified.
 
 ### Out-of-scope items (mandatory section)
 

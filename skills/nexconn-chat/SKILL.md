@@ -6,8 +6,8 @@ description: >-
   management, and push notifications. Use when building chat/messaging features,
   implementing IM, choosing channel types, integrating Chat SDK or Chat UI,
   analyzing IM screenshots, or asking about messaging capabilities.
-version: 1.0.0
-last_updated: 2026-06-18
+version: 1.0.1
+last_updated: 2026-08-06
 ---
 
 # Nexconn Chat Integration Skill
@@ -16,12 +16,14 @@ Use this skill as the entry point for Nexconn Chat work. Route the request, conf
 
 ## Integration routing
 
+**CRITICAL**: For every integration request, load the [SDK Integration Decision Framework](references/sdk-integration-decision-framework.md) as the decision checklist. First identify the project platform and existing SDK state, then read the relevant official documentation and inspect installed SDK artifacts when available; only after that, execute the five-layer judgment process using the collected evidence. If the user explicitly selects Chat UI or Chat SDK, treat that selection as a constraint; do not switch to the other integration layer without explaining the trade-off and obtaining approval. Do not implement until the decision layer is recorded.
+
 | Building…                              | Recommended approach          | Details                               |
 | -------------------------------------- | ----------------------------- | ------------------------------------- |
-| 1v1 private conversations              | Chat SDK/UI + Direct Channel  | [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md)         |
-| Small groups, customer service (≤3000) | Chat SDK/UI + Group Channel   | [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md)         |
-| Large communities, forums, guilds      | Chat SDK + Community Channel  | [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md)         |
-| Live chat rooms, temporary events      | Chat SDK + Open Channel       | [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md)         |
+| 1v1 private conversations              | Chat SDK/UI + Direct Channel  | Query channel capabilities via Channel Guide (see Channel capabilities section)         |
+| Small groups, customer service (≤3000) | Chat SDK/UI + Group Channel   | Query channel capabilities via Channel Guide (see Channel capabilities section)         |
+| Large communities, forums, guilds      | Chat SDK + Community Channel  | Query channel capabilities via Channel Guide (see Channel capabilities section)         |
+| Live chat rooms, temporary events      | Chat SDK + Open Channel       | Query channel capabilities via Channel Guide (see Channel capabilities section)         |
 | Quick launch, standard IM experience   | Chat UI                       | `integration-workflow.md`  |
 | Custom UI, deep customization          | Chat SDK                      | `integration-workflow.md`  |
 | Platform-specific setup (iOS / Android / Flutter / Web) | Read platform notes for that platform | `platform-setup/index.md` |
@@ -46,7 +48,13 @@ If the request mixes covered and uncovered channels (e.g. Web Group + Open), rec
 
 ## Channel capabilities
 
-For any "does <channel> support <capability>" question (member limits, offline storage/push, @ mentions, read receipts, unread count, edit/reply/forward, delete-for-me vs delete-for-everyone, channel deletion vs server-side dissolve, sub-channels, pinning, reliability), refer to the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md) — it holds the channel feature matrix. Capabilities not documented there (e.g. message pinning, emoji reactions, presence/last-seen) are unverified: fetch the relevant doc with `scripts/fetch-docs.sh` or treat them as application-layer (see `references/application-layer-rules.md`) before promising them.
+For any "does <channel> support <capability>" question (member limits, offline storage/push, @ mentions, read receipts, unread count, edit/reply/forward, delete-for-me vs delete-for-everyone, channel deletion vs server-side dissolve, sub-channels, pinning, reliability), fetch and read the Channel Guide:
+
+1. From the skill root, run: `bash scripts/fetch-docs.sh /guides/realtime-chat/intro-chat/im-feature-basic.md`
+2. Read the cached guide: `references/cache/guides/realtime-chat/intro-chat/im-feature-basic.md`
+3. If fetch fails due to network issues, continue with available information and mark the answer as pending verification
+
+The Channel Guide holds the channel feature matrix. Capabilities not documented there (e.g. message pinning, emoji reactions, presence/last-seen) are unverified: fetch the relevant doc with `scripts/fetch-docs.sh` or treat them as application-layer (see `references/application-layer-rules.md`) before promising them.
 
 Two recurring traps when answering:
 - *Channel deletion* removes the conversation from the current user's list; *Dissolve channel* removes the channel server-side for everyone. Do not conflate.
@@ -54,10 +62,18 @@ Two recurring traps when answering:
 
 ## Critical rules
 
+**INTEGRATION WORKFLOW ENFORCEMENT** (最高优先级):
+- **For EVERY integration request, you MUST fetch official documentation BEFORE writing any code**
+  - Use `bash scripts/fetch-docs.sh <doc-path>` to fetch quickstart/integration guides from skill root
+  - Read the fetched documentation completely to understand initialization sequence and workflow
+  - Only after understanding the documented workflow, proceed to implementation
+  - **Violation of this rule leads to incorrect initialization sequences and integration failures**
+  - DO NOT assume integration flow based on TypeScript definitions or "similar SDKs"
+
 - *Never place App Secret, signing logic, or Token-generation code in client-side code.*
-- *Always read official documentation before reading SDK source code* — type definitions lack initialization order, lifecycle, and best-practice context.
+- *Follow a two-phase documentation approach*: (1) Read official documentation first to understand integration workflow, initialization sequence, and best practices; (2) Then verify exact API signatures, enum names, and type definitions in the installed SDK code. Do not reverse-engineer integration flow from type definitions alone.
 - *Never invent API details* — if neither docs nor code confirms it, fetch the doc, inspect packages, or mark as pending review.
-- *Never infer SDK enum or constant member names from generic IM knowledge* — whenever guidance or code involves Nexconn SDK enum/constant members, verify exact names in the installed SDK artifacts for the target platform before using them. For Web/TypeScript, grep `node_modules/@nexconn/**/*.d.ts`; for Android, grep the installed Gradle/Maven SDK declarations or extracted AAR classes/sources; for iOS, grep the installed CocoaPods/SPM SDK headers, Swift interfaces, or generated module interfaces. If the platform artifact is unavailable, mark the name as pending verification instead of guessing.
+- *Never infer SDK enum or constant member names from generic IM knowledge* — after reading documentation, verify exact names in the installed SDK artifacts for the target platform. For Web/TypeScript, grep `node_modules/@nexconn/**/*.d.ts`; for Android, grep the installed Gradle/Maven SDK declarations or extracted AAR classes/sources; for iOS, grep the installed CocoaPods/SPM SDK headers, Swift interfaces, or generated module interfaces. If the platform artifact is unavailable, mark the name as pending verification instead of guessing.
 - *If documentation and installed code disagree*, implement against the installed code and mention the conflict briefly; if the cached doc looks outdated, refresh it with `bash scripts/fetch-docs.sh --force <path>`.
 - *Default generated UI copy and Chat UI language to `en_US`* unless the user requests otherwise or the project already standardizes on another locale.
 - *Default `NCEngine.initialize` log level to Debug* during integration; remind the user to switch to WARN/ERROR before production.
@@ -82,34 +98,82 @@ If only part of the request is in scope, handle the Chat messaging part and expl
 ```
 User Request
   │
-  ├─ Normalize terminology (see below)
+  ├─ Step 1: Normalize terminology (see below)
   │
-  ├─ Scope check → non-Chat? reject per "Out of scope"
+  ├─ Step 2: Scope check → non-Chat (calls, meetings, auth, marketing)? reject per "Out of scope"
   │
-  ├─ Contains image/screenshot?
-  │     ├─ If 2 or more images: run *Screenshot inventory & discard* first
-  │     │     → list each screen's subject in one line
-  │     │     → discard third-party brand chrome / marketing pages / watermarks
-  │     │     → mark Auth/Onboarding screens as application-layer (out of SDK scope)
-  │     │     → mark Call/RTC/meeting screens as cross-skill (Nexconn Call)
-  │     ├─ User explicitly requests implementation
-  │     │     → analyze per image-analysis-guide.md
-  │     │     → enter integration-workflow.md "Screenshot-driven implementation"
-  │     │     → run Confirmation Gates, then implement
-  │     └─ Otherwise (analysis-only / unclear intent)
-  │           → analyze per image-analysis-guide.md
-  │           → output analysis, STOP, wait for user confirmation
-  │
-  └─ Route by request type
-        ├─ Consultation → answer from references/docs. Done.
-        └─ Integration → load integration-workflow.md, follow from step 1.
+  └─ Step 3: Classify request type, then execute
+        │
+        ├─ CONSULTATION (asking about features, capabilities, limits):
+        │     │
+        │     ├─ Check official documentation and capability matrices first
+        │     │   → Verify exact details in the installed SDK when available
+        │     │   → Answer capability, limitations, and recommended integration layer
+        │     │
+        │     ├─ Has screenshot(s)?
+        │     │     YES → If 2+ images: run inventory & discard first (per image-analysis-guide.md)
+        │     │           → Analyze per image-analysis-guide.md
+        │     │           → Output capability analysis and recommendation, STOP
+        │     │     NO  → Answer capability, limitations, and recommendation, STOP
+        │     
+        └─ INTEGRATION (writing code, implementing features):
+              │
+              ├─ **STEP 1 - MANDATORY DOCUMENTATION FETCH** ⚠️:
+              │   From skill root, execute: `bash scripts/fetch-docs.sh /<platform-quickstart-path>`
+              │   Examples:
+              │     - Web: `bash scripts/fetch-docs.sh /chatui-web/quickstart.md`
+              │     - Android: `bash scripts/fetch-docs.sh /chatui-android/quickstart.md`
+              │     - iOS: `bash scripts/fetch-docs.sh /chatui-ios/quickstart.md`
+              │   Then read: `references/cache/<platform>/quickstart.md`
+              │   ⚠️ THIS STEP IS NOT OPTIONAL - DO NOT PROCEED WITHOUT READING DOCS
+              │
+              ├─ STEP 2 - Project Identification:
+              │   → infer the platform/SDK from project files
+              │   → check installed SDK versions and state
+              │
+              ├─ STEP 3 - Verify SDK Details:
+              │   → verify exact API signatures in installed SDK artifacts
+              │   → check enum names, type definitions, method signatures
+              │
+              ├─ STEP 4 - Execute Five-Layer Decision Framework (sdk-integration-decision-framework.md)
+              │   using the evidence collected from Steps 1-3:
+              │   Layer 1: Chat UI native capability check
+              │   Layer 2: Chat UI extension capability check
+              │   Layer 3: Chat SDK API check
+              │   Layer 4: Source code modification feasibility (if reached, read chat-ui-repositories.md)
+              │   Layer 5: Workaround or reject
+              │
+              ├─ STEP 5 - Record decision outcome: "Using Layer X approach because..."
+              │
+              ├─ STEP 6 - Implement:
+              │   Has screenshot(s)?
+              │     YES → If 2+ images: run inventory & discard first (per image-analysis-guide.md)
+              │           → Load integration-workflow.md in "Screenshot-driven implementation" mode
+              │           → Implement per decision framework result
+              │     NO  → Load integration-workflow.md in standard mode
+              │           → Implement per decision framework result
 ```
 
-Request type definitions:
-- **Consultation**: asking about features, channel differences, capabilities, limits.
-- **Integration**: writing code, modifying integration, building an IM app, implementing a feature.
+**Request type signals**:
+- Consultation: `这是什么功能 / what is this / can Chat SDK do this / does it support`
+- Integration: `怎么实现 / how to implement / implementation approach / 按这个截图实现 / build this / 给我代码 / generate code / integrate this`
+- A capability question becomes Integration when the user explicitly asks how to implement, integrate, customize, or modify the capability.
+- If unclear: ask one short clarifying question before proceeding to Step 3 execution
 
-"Explicitly requests implementation" examples: "按这个截图实现 / build this UI / 给我代码 / generate code / integrate this". "Analyze only" examples: "这是什么功能 / what is this / can Chat SDK do this".
+**Inventory & discard** (for 2+ screenshots):
+- List each screen's subject in one line
+- Discard: third-party brand chrome, marketing pages, watermarks
+- Mark as out-of-scope: Auth/Onboarding screens (application-layer), Call/RTC/meeting screens (Nexconn Call)
+- Keep only Chat-relevant screenshots for analysis/implementation
+
+**Execution notes**:
+- **Consultation responses**: Report the supported capability, documented limitations, and recommended integration layer. Do not execute the full five-layer framework or evaluate source modification/workarounds unless the user asks how to implement the requirement.
+- **Integration responses**: MUST start with STEP 1 (fetch documentation). Must include a decision layer annotation (e.g., "Layer 1: Chat UI native capability", "Layer 3: Chat SDK API + custom wrapper").
+- **When an Integration request reaches Layer 4**: Must explicitly ask user for approval before cloning source code (see chat-ui-repositories.md).
+- **NEVER skip STEP 1 documentation fetch** - even if you think you know the SDK, even if TypeScript definitions are available, even if it "looks simple"
+- All paths are mutually exclusive; once a path executes, the workflow ends at its terminal point (STOP or Implement)
+- If all screenshots are discarded in inventory, treat as "No screenshot" in the execution branch
+
 
 ## Terminology normalization
 
@@ -121,7 +185,8 @@ Before scope check, rewrite user wording into Nexconn's official terms when the 
 4. Keep user's business intent intact. If a normalized term changes scope, mention it once.
 5. If mapping is uncertain, ask one short clarifying question.
 
-If the glossary cannot be fetched because network access is unavailable, continue with the local references and mark any uncertain terminology as pending verification instead of blocking the whole task.
+**Network unavailability fallback**: If documentation cannot be fetched due to network issues, continue with cached files (if available) or local references. Mark any uncertain terminology as pending verification instead of blocking the whole task. This fallback strategy applies to all documentation fetch operations throughout the skill workflow.
+
 
 ## References
 
@@ -129,8 +194,10 @@ Only load a reference file when its trigger condition is met. Do NOT preload all
 
 | File | Purpose | Load when |
 | --- | --- | --- |
-| `integration-workflow.md` | Full execution workflow: project ID, confirmation, docs, implementation, testing, todo | Request is Integration type |
-| `platform-setup/<platform>.md` | Navigation only: per-platform (`web`/`android`/`ios`/`flutter`) doc-path index plus cross-doc difference flags (e.g. iOS vs Android pin UI, iOS data-center default). Channel coverage lives in SKILL.md; the channel capability matrix is available at [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md); start from `platform-setup/index.md` | Target platform is known and you need its doc map or platform-specific difference flags |
+| `sdk-integration-decision-framework.md` | Five-layer decision checklist: Chat UI native → Chat UI extensions → Chat SDK API → source code modification → workaround. Use the evidence collected during project identification and documentation/code verification to determine the implementation path | Load for every Integration request; execute after the preflight evidence is collected and before implementation |
+| `integration-workflow.md` | Full execution workflow: project identification, confirmation, documentation/code verification, implementation, testing, todo | Request is Integration type; use its Project Identification and Documentation & Code Verification sections as preflight before the decision framework, then continue with the remaining implementation sections |
+| `chat-ui-repositories.md` | Chat UI source code repository URLs for each platform (Web/Android/iOS/Flutter) | Decision framework reaches Layer 4 "source code modification" AND user explicitly agrees to modify source code |
+| `platform-setup/<platform>.md` | Navigation only: per-platform (`web`/`android`/`ios`/`flutter`) doc-path index plus cross-doc difference flags (e.g. iOS vs Android pin UI, iOS data-center default). Channel coverage lives in SKILL.md; the channel capability matrix is fetched via `fetch-docs.sh` as described in Channel capabilities section; start from `platform-setup/index.md` | Target platform is known and you need its doc map or platform-specific difference flags |
 | `credentials-and-token.md` | App Key, App Secret, Token, security rules | Handling credentials or security-sensitive guidance |
 | `application-layer-rules.md` | Application-level policies (edit window, recall window, mention triggers, etc.) | Request includes time-window, character-limit, or trigger-rule logic that the SDK does not enforce |
 | `feature-pattern-map.md` | Common modern-IM feature → Nexconn classification (self chat, scheduled, reactions, stickers, voice, link preview, folders, presence, etc.) | Screenshot/mockup contains modern IM features beyond the basic message timeline |

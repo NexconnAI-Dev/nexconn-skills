@@ -24,6 +24,6 @@ bash scripts/fetch-docs.sh <path>      # e.g. bash scripts/fetch-docs.sh /chatui
 rg chatui-android references/llms.txt  # discover paths not listed in a platform file
 ```
 
-`fetch-docs.sh` writes into `references/cache/` and manages freshness itself — it re-downloads a cached file once it passes the staleness threshold (14 days by default) and falls back to a stale copy when offline, so you normally don't manage the cache by hand. Use `--force` to refresh immediately.
+`fetch-docs.sh` writes into `references/cache/` and manages freshness itself — it re-downloads a cached file once it passes the staleness threshold (7 days by default) and falls back to a stale copy when offline, so you normally don't manage the cache by hand. Use `--force` to refresh immediately.
 
 The ⚠️ convention (e.g. `⚠️ Unverified`) is defined in SKILL.md.

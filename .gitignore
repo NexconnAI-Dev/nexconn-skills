@@ -16,3 +16,7 @@ example/web/react/node_modules
 **/*.secret
 **/*.token
 
+# Nexconn Chat skill documentation cache
+skills/nexconn-chat/references/cache/
+skills/nexconn-chat/references/llms.txt
+

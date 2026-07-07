@@ -12,7 +12,7 @@ Use this guide to:
 | Requirement | SDK-enforced? | Recommended layering |
 | --- | --- | --- |
 | "Within X minutes the sender can edit the message" | ❌ | Client-side gate for UX + server-side validation for tamper resistance |
-| "Within X minutes the sender can recall (delete-for-everyone)" | ⚠️ Some platforms expose a default window; verify in cached docs | Use SDK default if it matches; otherwise wrap with application rule |
+| "Within X minutes the sender can recall (delete-for-everyone)" | ❌ | Client-side gate for UX + server-side validation for tamper resistance (same as edit window) |
 | "Only admins can pin / mute / freeze" | ⚠️ Group/Community administrators are SDK roles, but custom role mappings are app-layer | Map app roles to Nexconn roles; gate UI in app, validate in app server |
 | "Message text must be ≤ N chars" | ❌ | App-layer validation in composer; server-side validation if you sign messages |
 | "Cannot @ more than N users" | ❌ | App-layer validation in composer |
@@ -45,12 +45,19 @@ Pitfalls:
 
 Most users mean "let the sender unsend a message within X minutes."
 
+**Important**: The SDK itself does not enforce a time window for recall — all channel types support recall anytime.
+
 Layering:
 
-1. Verify the SDK's default recall window for the target platform / channel type from cached docs.
-2. If the user's window matches the default, use the SDK API directly.
-3. If the user's window is shorter, gate the UI menu in the application layer the same way as the edit window.
-4. If the user's window is longer, request a Nexconn-side configuration change — do not "fake" recall in the client (it cannot tamper with peers' local history).
+1. SDK provides the recall API (`deleteMessageForAll()`) with no built-in time restriction.
+2. Application layer:
+   - On long-press / recall menu trigger, check `now - sentTime < YOUR_LIMIT`. If false, hide or disable the menu item.
+   - On confirm, call the SDK recall API.
+   - When rendering, show a "message deleted" placeholder for recalled messages.
+3. Application server (recommended for tamper resistance):
+   - When you sign or audit messages on the server, reject recall requests whose original `sentTime` is older than the policy window.
+
+Implementation is identical to the edit window pattern above.
 
 ## @ mention trigger patterns
 

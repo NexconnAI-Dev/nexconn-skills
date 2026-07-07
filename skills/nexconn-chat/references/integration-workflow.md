@@ -7,9 +7,10 @@ This file is loaded when the request is classified as **Integration** in SKILL.m
 1. Project identification — infer platform/SDK from project files, then read the matching platform file under `references/platform-setup/`
 2. Confirmation gates — confirm what cannot be inferred
 3. Documentation & code verification — fetch official docs, then confirm with installed code
-4. Implementation — generate code following rules below
-5. Testing & verification — provide verification steps
-6. Final todo handling — output implemented/unimplemented summary
+4. Decision framework — execute the five-layer decision process using the evidence collected in steps 1–3, and record the selected layer
+5. Implementation — generate code following rules below
+6. Testing & verification — provide verification steps
+7. Final todo handling — output implemented/unimplemented summary
 
 ## Project Identification
 
@@ -36,13 +37,14 @@ Once the platform is identified, read the matching file under `references/platfo
 
 ## Confirmation Gates
 
-Required inputs before writing integration code: **Platform**, **SDK selection**, **Channel type**, and **Business scenario**.
+Required inputs before deciding or writing integration code: **Platform**, **Channel type**, and **Business scenario**. **SDK selection is optional user input**: if the user explicitly selects Chat UI or Chat SDK, treat it as a constraint; otherwise determine it with the five-layer decision framework.
 
-Infer from project files first (see Project Identification above). If a missing value can be inferred from project files or the user's wording, state the inference. If it cannot be inferred, ask the user.
+Infer from project files first (see Project Identification above). If a missing value can be inferred from project files or the user's wording, state the inference. If Platform, Channel type, or Business scenario cannot be inferred, ask the user. Do not ask the user to choose an SDK when they have not expressed a preference; let the decision framework determine it.
 
 - Refer to the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md) when limits, feature support, or tradeoffs matter.
 - Do not repeat questions for information the user already gave.
 - If multiple channel types are needed, recommend a combination and explain the responsibility of each.
+- If the user-selected SDK cannot satisfy the requirement after the relevant Chat UI/Chat SDK layers are checked, explain the limitation and ask before switching SDKs or using a different implementation layer.
 - If the project already has Nexconn Chat integration code (initialization, connection, channel usage), treat existing choices as confirmed. Only ask about values that are new or changing.
 
 **Credential gate**:
@@ -53,9 +55,9 @@ Infer from project files first (see Project Identification above). If a missing 
 
 ## Documentation And Code Verification
 
-**MANDATORY: Documentation-first rule**
+**Documentation-first rule**
 
-Before reading installed SDK source code, type definitions, or package internals, you MUST first:
+Before reading installed SDK source code, type definitions, or package internals, prioritize official documentation:
 
 1. From the skill root, search `references/llms.txt` (use `rg` or read in segments) for the relevant integration guide or quickstart path.
 2. Run `bash scripts/fetch-docs.sh <path>` from the skill root to cache the guide under `references/cache/`. Add `--force` before the path only when the cached file must be refreshed.
@@ -65,9 +67,30 @@ Only AFTER reading the official guide, use installed SDK code or type definition
 
 Do NOT reverse-engineer integration flow from type definitions or SDK source alone.
 
+**Fallback strategy when documentation is unavailable**:
+
+- If network access is unavailable and no cached version exists, continue using installed SDK code and local project references.
+- Mark any uncertain API usage, initialization sequence, or integration pattern as "pending documentation review" in code comments or implementation notes.
+- Prioritize re-verifying these items against official docs once network access is restored.
+
+**General verification rules**:
+
 - Prefer integration guides/playbooks over full API references for workflows.
 - If documentation and code disagree, prefer installed SDK/code for implementation details, mention the conflict briefly, and keep the implementation compatible with the project version.
 - If no source confirms a detail, do not invent it. Fetch the relevant documentation, inspect installed packages, ask a clarifying question, or mark it pending review.
+
+## SDK Integration Decision Framework
+
+Before implementing any integration code, follow the five-layer decision framework documented in [SDK Integration Decision Framework](./sdk-integration-decision-framework.md).
+
+The framework ensures systematic evaluation of implementation paths in this order:
+1. Chat UI native capabilities (lowest cost)
+2. Chat UI custom extensions (stay within Chat UI ecosystem)
+3. Chat SDK API layer (supplement Chat UI with lower-level APIs)
+4. Source code modification (requires explicit user approval)
+5. Final decision (proceed, workaround, or report as unsupported)
+
+Refer to the full document for detailed criteria and execution steps.
 
 ## Implementation Rules
 

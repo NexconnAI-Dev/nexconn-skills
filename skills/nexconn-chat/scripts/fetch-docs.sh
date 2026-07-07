@@ -9,7 +9,7 @@
 #   --force        refresh an existing cached file, ignoring its age
 #   --max-age DAYS override the staleness threshold for this run. A cached file
 #                  older than DAYS is re-downloaded automatically; DAYS=0 disables
-#                  expiry (cache never goes stale). Defaults to 14 days.
+#                  expiry (cache never goes stale). Defaults to 7 days.
 #   --prefetch     bulk-fetch a curated set of core docs into ./references/cache.
 #                  set defaults to "core". Available sets:
 #                      core     ChatUI quickstarts (web/android/ios) + Chat/Call glossaries +
@@ -32,7 +32,7 @@ CACHE_DIR="${REFERENCES_DIR}/cache"
 MAX_RETRIES=3
 FORCE=0
 # Identify requests as originating from this skill (sent on every curl call).
-CURL_HEADERS=(-A "nexconn-chat-skill/1.0.0 (fetch-docs)")
+CURL_HEADERS=(-A "nexconn-chat-skill/1.0.1 (fetch-docs)")
 # Cache staleness threshold in days. 0 = never expire (legacy permanent cache).
 # llms.txt index: 1 day, other docs: 7 days
 INDEX_MAX_AGE_DAYS=1

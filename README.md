@@ -1,95 +1,98 @@
-# Nexconn Skills
+# Nexconn Chat Integration Skill
 
-A collection of Nexconn AI skills for quickly integrating Nexconn platform capabilities.
+A Codex Skill for quickly integrating [Nexconn Chat](https://www.nexconn.ai/product/chat). It covers channel selection, choosing between the Chat SDK and Chat UI, platform setup, credential management, push notifications, and other common integration tasks.
 
-## 📦 Available Skills
+Supported platforms include Android, iOS, Web, and Flutter.
 
-### nexconn-chat
+## Quick Links
 
-An instant messaging (IM) integration skill supporting direct messages, group chats, community channels, open channels, and more.
+- [Sign up](https://console.nexconn.ai/agile/register?utm_source=ConsolegithubChatSDKSkills) to get a Nexconn App Key
+- [Documentation](https://docs.nexconn.ai/)
+- [Demo app](https://www.nexconn.ai/demos/chat)
+- [Chat UI](https://www.nexconn.ai/product/chat#ui-showcase)
 
-**Trigger conditions:**
-- User mentions Nexconn Chat or adding chat/messaging features
-- Implementing instant messaging or building a chat application
-- Asking about channel types or messaging capabilities
+## Use Cases
 
-**Supported platforms:**
-- Android / iOS / Web / Flutter
+With the Nexconn Chat component library, you can build a variety of chat experiences, including:
 
-**Core capabilities:**
-- ✅ Direct Channels - one-on-one private conversations
-- ✅ Group Channels - small team collaboration (≤3,000 members)
-- ✅ Community Channels - large communities and forums (no member limit)
-- ✅ Open Channels - live chat rooms, real-time interaction
-- ✅ Offline messages and push notifications
-- ✅ Chat SDK (custom UI) and Chat UI (out of the box)
+- Livestream chat like Twitch or YouTube
+- Team collaboration chat like Slack
+- Messaging experiences like WhatsApp or Facebook Messenger
+- Customer support chat like Drift or Intercom
 
-**Quick start:**
-```bash
-# View the skill documentation
+## Nexconn Chat Integration Guide
+
+Start with the [Nexconn Chat documentation](https://docs.nexconn.ai/). It guides you through SDK initialization, user connections, conversation management, and sending and receiving messages.
+
+This Skill recommends Direct, Group, Community, or Open Channels based on your use case and helps you choose between the ready-to-use Chat UI and the deeply customizable Chat SDK.
+
+## Core Features
+
+- **User Management**: Centrally manage user profiles and relationships, with blocking and banning to help maintain a healthy community.
+
+- **User Presence**: Track online, offline, and custom user states in real time for more timely communication.
+
+- **Message Read Receipts**: Synchronize read state across devices so senders can immediately confirm that a message was read.
+
+- **Rich Message Types**: Built-in support for text, emojis, images, audio, video, files, and custom messages.
+
+- **Message Operations**: Send, delete, edit, reply to, and forward messages, with message history and search.
+
+- **Real-time Webhooks**: Receive real-time message, user, and group events to capture user activity accurately.
+
+- **Broadcast Announcements**: Target all users, online users, users with specific tags, or selected users for precise delivery.
+
+- **Moderation & Safety**: Intelligently moderate message content and identify risks in real time to keep conversations safe.
+
+## Installation
+
+Clone the repository to view and use the Skill:
+
+```shell
+git clone https://github.com/NexconnAI-Dev/nexconn-skills.git
+cd nexconn-skills
+```
+
+## Quick Start
+
+```shell
+# View the Skill instructions
 cat skills/nexconn-chat/SKILL.md
 
-# Fetch the latest official docs
-bash skills/nexconn-chat/scripts/fetch-docs.sh <path>
+# Fetch the latest official documentation index
+bash skills/nexconn-chat/scripts/fetch-docs.sh
+
+# Fetch a specific document
+bash skills/nexconn-chat/scripts/fetch-docs.sh \
+  /guides/realtime-chat/intro-chat/im-feature-basic.md
 ```
 
-## 🚀 Usage
+## Usage
 
-### Prerequisites
+When integrating Nexconn Chat, use this Skill in the following order:
 
-1. **Get your App Key and App Secret**
-   - Log in to the [Nexconn Console](https://console.nexconn.ai/agile/apps/list)
-   - Create a new app or select an existing one
-   - Copy the **App Key** and **App Secret**
+1. Identify the target platform and existing SDK state from the project files.
+2. Choose a Channel type based on member count, message persistence, and real-time requirements.
+3. First evaluate whether Chat UI meets your needs; use Chat SDK for custom interfaces or Channel types not covered by Chat UI.
+4. Confirm the initialization, connection, and messaging flow in the official documentation, then verify the exact APIs against the installed SDK.
+5. Use the App Key for client initialization. Keep the App Secret, signing logic, and Token generation on the server.
 
-2. **Get a Token (access token)**
-   - The Token must be obtained through a server-side API
-   - During testing, you can fetch it manually using the [Postman Collection](https://docs.nexconn.ai/platform-chat-api/explore-api-with-postman)
+### Channel Selection
 
-### Integration example
-
-```javascript
-// Example configuration (placeholders, replace with your own values)
-// App Key comes from the Nexconn Console; the Token must be returned by your server-side API. Never put the App Secret in the client.
-const appKey = import.meta.env.VITE_NEXCONN_APP_KEY ?? 'YOUR_APP_KEY';
-const token = await fetchTokenFromYourServer(); // Issued server-side, e.g. a string like 'xxxx@xxx.rongnav.com;xxx.rongcfg.com'
-
-// Initialize the Chat SDK
-// Refer to the docs for your target platform for the actual integration code
-```
-
-> ⚠️ Security rule: **Do not** commit real Tokens, App Secrets, or signing material to your repository. During testing, you can use the [Postman Collection](https://docs.nexconn.ai/platform-chat-api/explore-api-with-postman) to fetch a one-time Token manually.
-
-## 📚 Documentation structure
-
-```
-nexconn-skills/
-├── skills/
-│   └── nexconn-chat/
-│       ├── SKILL.md                    # Main skill documentation
-│       ├── references/
-│       │   ├── llms.txt                # Official documentation index
-│       │   └── cache/                  # Cached remote docs
-│       └── scripts/
-│           └── fetch-docs.sh           # Documentation download script
-└── example/
-    └── web/
-        └── react/                      # React integration example
-```
-
-## 🎯 Channel selection guide
-
-| Use case | Recommended channel | Key features |
+| Use case | Recommended Channel | Key features |
 | --- | --- | --- |
-| One-on-one private conversations between users | Direct Channels | Offline messages, push notifications |
-| Small teams, interest groups, support groups | Group Channels | ≤3,000 members |
-| Large communities, forums, guilds, organizations | Community Channels | No member limit, supports sub-channels |
-| Live chat rooms, real-time interaction, temporary events | Open Channels | Online-only, high concurrency |
+| One-to-one private conversations | Direct Channel | Offline messages and push notifications |
+| Small teams, interest groups, and customer support | Group Channel | Up to 3,000 members |
+| Large communities, forums, guilds, and organizations | Community Channel | No member limit; supports sub-channels |
+| Livestream chat and temporary events | Open Channel | Online-only messages for high-concurrency real-time interaction |
 
-For a detailed capability comparison, see [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md)
+See the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md) for a complete capability comparison.
 
-## 📖 Related resources
 
-- [Nexconn official documentation](https://docs.nexconn.ai/)
-- [Nexconn Console](https://console.nexconn.ai/)
-- [Contact support](https://www.nexconn.ai/contact-us)
+## Contributing
+
+Contributions are welcome. Add or update tests where appropriate, preserve existing API behavior, and describe user-facing changes in your pull request.
+
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).

@@ -1,8 +1,8 @@
 # Nexconn Chat Integration Skill
 
-A Codex Skill for quickly integrating [Nexconn Chat](https://www.nexconn.ai/product/chat). It covers channel selection, choosing between the Chat SDK and Chat UI, platform setup, credential management, push notifications, and other common integration tasks.
+A coding agent skill for rapid [Nexconn Chat](https://www.nexconn.ai/product/chat) integration. This skill guides AI coding assistants through the complete integration workflow: channel type selection, SDK vs. UI decision-making, platform-specific setup, credential management, push notification configuration, and common integration patterns.
 
-Supported platforms include Android, iOS, Web, and Flutter.
+**Supported platforms:** Android, iOS, Web, Flutter
 
 ## Quick Links
 
@@ -91,7 +91,11 @@ See the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/
 
 ## Contributing
 
-Contributions are welcome. Add or update tests where appropriate, preserve existing API behavior, and describe user-facing changes in your pull request.
+Contributions are welcome. Before opening an issue or pull request:
+
+- Use the [Bug Report template](.github/ISSUE_TEMPLATE/bug_report.md) for reproducible problems.
+- Use the [Pull Request template](.github/PULL_REQUEST_TEMPLATE.md) when proposing documentation, skill, or example changes.
+- Add or update tests where appropriate, preserve existing API behavior, and describe user-facing changes clearly.
 
 ## License
 

@@ -12,8 +12,8 @@ importers:
         specifier: 26.2.1
         version: 26.2.1(@nexconn/engine@26.2.1)
       '@nexconn/chatui':
-        specifier: 26.2.2-alpha.1
-        version: 26.2.2-alpha.1(@nexconn/chat@26.2.1(@nexconn/engine@26.2.1))(@nexconn/engine@26.2.1)(lit@3.3.3)
+        specifier: 26.2.5
+        version: 26.2.5(@nexconn/chat@26.2.1(@nexconn/engine@26.2.1))(@nexconn/engine@26.2.1)(lit@3.3.3)
       '@nexconn/engine':
         specifier: 26.2.1
         version: 26.2.1
@@ -79,8 +79,8 @@ packages:
     peerDependencies:
       '@nexconn/engine': '=26.2.1'
 
-  '@nexconn/chatui@26.2.2-alpha.1':
-    resolution: {integrity: sha512-dTBHW7D96ZE6FKgRxiyFFtmqOEu4jfI8Apcx+SiCHChpud29a/fAUdIUXN3f/lzpm94gpMsVsnSj4K7FYGHd4A==}
+  '@nexconn/chatui@26.2.5':
+    resolution: {integrity: sha512-HocPPQpyqeDzmmJS2vTzIgmorEY16/miWk7HBOm81a87Nv1lvITxH0BLNj+4bj3XCeAPccDL7gLmzxtw8WXujQ==}
     peerDependencies:
       '@nexconn/chat': ^26.2.1
       '@nexconn/engine': ^26.2.1
@@ -469,7 +469,7 @@ snapshots:
     dependencies:
       '@nexconn/engine': 26.2.1
 
-  '@nexconn/chatui@26.2.2-alpha.1(@nexconn/chat@26.2.1(@nexconn/engine@26.2.1))(@nexconn/engine@26.2.1)(lit@3.3.3)':
+  '@nexconn/chatui@26.2.5(@nexconn/chat@26.2.1(@nexconn/engine@26.2.1))(@nexconn/engine@26.2.1)(lit@3.3.3)':
     dependencies:
       '@nexconn/chat': 26.2.1(@nexconn/engine@26.2.1)
       '@nexconn/engine': 26.2.1

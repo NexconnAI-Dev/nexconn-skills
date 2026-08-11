@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@nexconn/chat": "26.2.1",
-    "@nexconn/chatui": "26.2.2-alpha.1",
+    "@nexconn/chatui": "26.2.5",
     "@nexconn/engine": "26.2.1",
     "lit": "^3.3.2",
     "vue": "^3.5.0"

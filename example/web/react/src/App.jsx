@@ -42,7 +42,7 @@ function App() {
       //    Debug log level helps integration verification; switch to WARN/ERROR for production.
       NCEngine.initialize({
         appKey,
-        logLevel: LogLevel.Debug,
+        logLevel: LogLevel.DEBUG,
       });
 
       // 2. ServiceHooks - provide user / group / system channel profile data

@@ -46,26 +46,19 @@ This Skill recommends Direct, Group, Community, or Open Channels based on your u
 
 ## Installation
 
-Clone the repository to view and use the Skill:
+Install the Nexconn Chat Skill with the Skills CLI:
 
-```shell
-git clone https://github.com/NexconnAI-Dev/nexconn-skills.git
-cd nexconn-skills
+```bash
+npx skills add https://github.com/NexconnAI-Dev/nexconn-skills.git --skill nexconn-chat
 ```
 
 ## Quick Start
 
-```shell
-# View the Skill instructions
-cat skills/nexconn-chat/SKILL.md
+After installation, ask your coding agent to use the `nexconn-chat` Skill for your integration task. For example:
 
-# Fetch the latest official documentation index
-bash skills/nexconn-chat/scripts/fetch-docs.sh
+> Use the `nexconn-chat` Skill to integrate Nexconn Chat into this project.
 
-# Fetch a specific document
-bash skills/nexconn-chat/scripts/fetch-docs.sh \
-  /guides/realtime-chat/intro-chat/im-feature-basic.md
-```
+For a more tailored integration, include your target platform and chat scenario.
 
 ## Usage
 
@@ -87,7 +80,6 @@ When integrating Nexconn Chat, use this Skill in the following order:
 | Livestream chat and temporary events | Open Channel | Online-only messages for high-concurrency real-time interaction |
 
 See the [Channel Guide](https://docs.nexconn.ai/guides/realtime-chat/intro-chat/im-feature-basic.md) for a complete capability comparison.
-
 
 ## Contributing
 

@@ -20,12 +20,6 @@ With the Nexconn Chat component library, you can build a variety of chat experie
 - Messaging experiences like WhatsApp or Facebook Messenger
 - Customer support chat like Drift or Intercom
 
-## Nexconn Chat Integration Guide
-
-Start with the [Nexconn Chat documentation](https://docs.nexconn.ai/). It guides you through SDK initialization, user connections, conversation management, and sending and receiving messages.
-
-This Skill recommends Direct, Group, Community, or Open Channels based on your use case and helps you choose between the ready-to-use Chat UI and the deeply customizable Chat SDK.
-
 ## Core Features
 
 - **User Management**: Centrally manage user profiles and relationships, with blocking and banning to help maintain a healthy community.
